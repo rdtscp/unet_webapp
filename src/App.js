@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import LoginBox from './components/login/LoginBox.js';
+
+
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+    var token = localStorage.getItem(token);
+    if (token) {
+      return (
+        <div className="app">
+          <p> webapp </p>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      )
+    } else {
+      return (
+        <div className="app">
+          <LoginBox />
+        </div>
+      );
+    }
   }
 }
+
 
 export default App;
