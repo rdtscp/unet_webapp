@@ -16,7 +16,7 @@ export default class LoginBox extends Component {
         this.login = this.login.bind(this);
 
         
-      }
+    }
 
     showLogin() {
         this.setState({
@@ -67,6 +67,9 @@ export default class LoginBox extends Component {
             },
             function(data, status){
                 alert(data.msg);
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                }
             });
         });
     }
