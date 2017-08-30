@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
+import axios from 'axios';
 import LoginBox from './components/login/LoginBox.js';
 
 
@@ -10,34 +11,40 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      authenticated: true,
       loading: true
     };
   }
   
   componentDidMount () {
-    var token = localStorage.getItem('token');
-    $.getJSON("http://localhost:3000/csrfToken",(data, status) => {
-      var csrf = data._csrf;
-      $.post("http://localhost:3000/unet/device/get", {_csrf: csrf, token: token}, (res, status) => {
-        if (!res.tokenValid) localStorage.removeItem('token');
-        this.setState({
-          loading: false
-        });
-      });
+    
+    var token = localStorage.getItem('token');    
+    axios({
+      method:'POST',
+      url:'http://api.localhost:1337/unet/device/get',
+      data: {
+        token: token
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
+
+  
 
 
   render() {
 
     let splash_page;
 
-    var token = localStorage.getItem('token');
-
     if (this.state.loading) {
       splash_page = <div className="app"> <p> Loading Please Wait... </p> </div>;
     } else {
-      if (token) {
+      if (this.state.authenticated) {
         splash_page = <div className="app"> logged in </div>;
       } else {
         splash_page = <div className="app"> <LoginBox /> </div>;

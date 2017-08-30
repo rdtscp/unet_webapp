@@ -58,19 +58,15 @@ export default class LoginBox extends Component {
         var uname = document.getElementById("log_uname").value;
         var pword = document.getElementById("log_pword").value;
         
-        $.getJSON("http://localhost:3000/csrfToken",(data, status) => {
-            var csrf = data._csrf;
-            $.post("http://localhost:3000/unet/user/get", {
-                username: uname,
-                password: pword,
-                _csrf: csrf
-            },
-            function(data, status){
-                alert(data.msg);
-                if (data.token) {
-                    localStorage.setItem('token', data.token);
-                }
-            });
+        $.post("http://localhost:1337/unet/user/get", {
+            username: uname,
+            password: pword
+        },
+        function(data, status){
+            alert(data.msg);
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+            }
         });
     }
 
