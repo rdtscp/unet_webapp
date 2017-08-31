@@ -18,15 +18,19 @@ class App extends Component {
   
   componentDidMount () {
     
-    var token = localStorage.getItem('token');    
+    var token = localStorage.getItem('token');
+
     axios({
       method:'POST',
       url:'http://api.localhost:1337/unet/device/get',
       data: {
         token: token
-      }
+      },
+      withCredentials: true,
+      contentType: 'json',
     })
     .then(function (response) {
+      alert(response.data.tokenValid)
       console.log(response);
     })
     .catch(function (error) {
