@@ -21,21 +21,36 @@ class App extends Component {
     var token = localStorage.getItem('token');
 
     axios({
-      method:'POST',
-      url:'http://api.localhost:1337/unet/device/get',
-      data: {
-        token: token
-      },
+      method:'GET',
+      url:'http://api.localhost:1337/csrfToken',
       withCredentials: true,
       contentType: 'json',
     })
     .then(function (response) {
-      alert(response.data.tokenValid)
+      axios({
+        method:'POST',
+        url:'http://api.localhost:1337/unet/device/get',
+        data: {
+          _csrf: response.data._csrf,
+          token: token
+        },
+        withCredentials: true,
+        contentType: 'json',
+      })
+      .then(function (response) {
+        alert(response.data.tokenValid)
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       console.log(response);
     })
     .catch(function (error) {
       console.log(error);
     });
+
+    
   }
 
   
