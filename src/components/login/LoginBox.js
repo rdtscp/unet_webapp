@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery';
+import axios from 'axios';
 require('./LoginBox.css');
 
 export default class LoginBox extends Component {
@@ -38,35 +39,78 @@ export default class LoginBox extends Component {
     }
 
     register() {
-        var uname = document.getElementById("reg_uname").value;
-        var pword = document.getElementById("reg_pword").value;
+
+        function getCRSF(cb) {
+            axios({
+              method:'GET',
+              url:'http://api.localhost:1337/csrfToken',
+              withCredentials: true,
+              contentType: 'json',
+            })
+            .then((response) => {
+              cb(response.data._csrf);
+            });
+          }
+
+        var uname = document.getElementById("log_uname").value;
+        var pword = document.getElementById("log_pword").value;
         
-        $.getJSON("http://localhost:3000/csrfToken",(data, status) => {
-            var csrf = data._csrf;
-            $.post("http://localhost:3000/unet/user/create", {
-                username: uname,
-                password: pword,
-                _csrf: csrf
-            },
-            function(data, status){
-                alert(data.msg);
+        getCRSF((csrf) => {
+            axios({
+                method: 'POST',
+                url: 'http://api.localhost:1337/unet/user/create',
+                data: {
+                    _csrf: csrf,
+                    username: uname,
+                    password: pword,
+                },
+                withCredentials: true,
+                contentType: 'json',
+            })
+            .then((response) => {
+                alert(response.data.msg)
+                if (response.data.token) {
+                    localStorage.setItem('token', response.data.token);
+                }
             });
         });
     }
 
     login() {
+
+        function getCRSF(cb) {
+            axios({
+              method:'GET',
+              url:'http://api.localhost:1337/csrfToken',
+              withCredentials: true,
+              contentType: 'json',
+            })
+            .then((response) => {
+              cb(response.data._csrf);
+            });
+          }
+
         var uname = document.getElementById("log_uname").value;
         var pword = document.getElementById("log_pword").value;
         
-        $.post("http://localhost:1337/unet/user/get", {
-            username: uname,
-            password: pword
-        },
-        function(data, status){
-            alert(data.msg);
-            if (data.token) {
-                localStorage.setItem('token', data.token);
-            }
+        getCRSF((csrf) => {
+            axios({
+                method: 'POST',
+                url: 'http://api.localhost:1337/unet/user/get',
+                data: {
+                    _csrf: csrf,
+                    username: uname,
+                    password: pword,
+                },
+                withCredentials: true,
+                contentType: 'json',
+            })
+            .then((response) => {
+                alert(response.data.msg)
+                if (response.data.token) {
+                    localStorage.setItem('token', response.data.token);
+                }
+            });
         });
     }
 

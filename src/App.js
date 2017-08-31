@@ -17,41 +17,43 @@ class App extends Component {
   }
   
   componentDidMount () {
+
+    function getCRSF(cb) {
+      axios({
+        method:'GET',
+        url:'http://api.localhost:1337/csrfToken',
+        withCredentials: true,
+        contentType: 'json',
+      })
+      .then((response) => {
+        cb(response.data._csrf);
+      });
+    }
     
     var token = localStorage.getItem('token');
 
-    axios({
-      method:'GET',
-      url:'http://api.localhost:1337/csrfToken',
-      withCredentials: true,
-      contentType: 'json',
-    })
-    .then(function (response) {
+    getCRSF((csrf) => {
       axios({
         method:'POST',
         url:'http://api.localhost:1337/unet/device/get',
         data: {
-          _csrf: response.data._csrf,
+          _csrf: csrf,
           token: token
         },
         withCredentials: true,
         contentType: 'json',
       })
-      .then(function (response) {
-        alert(response.data.tokenValid)
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
+      .then((response) => {
+        this.setState({
+          authenticated: response.data.tokenValid,
+          loading: false
+        })
       });
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
     });
 
     
   }
+
 
   
 
