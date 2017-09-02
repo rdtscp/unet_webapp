@@ -3,9 +3,15 @@ import './App.css';
 import $ from 'jquery';
 import axios from 'axios';
 import LoginBox from './components/login/LoginBox.js';
+import network from './helpers/networkHelper.js';
 
 
-
+/* class to define landing page of Application.
+ *
+ * Checks if the auth token stored is valid,
+ * and presents components appropriately.
+ * 
+ */
 class App extends Component {
 
   constructor() {
@@ -15,48 +21,30 @@ class App extends Component {
       loading: true
     };
   }
+
+  isAuthenticated() {
+    this.setState({
+      authenticated: true
+    });
+  }
   
   componentDidMount () {
-
-    function getCRSF(cb) {
-      axios({
-        method:'GET',
-        url:'http://api.localhost:1337/csrfToken',
-        withCredentials: true,
-        contentType: 'json',
-      })
-      .then((response) => {
-        cb(response.data._csrf);
-      });
-    }
     
     var token = localStorage.getItem('token');
 
-    getCRSF((csrf) => {
-      axios({
-        method:'POST',
-        url:'http://api.localhost:1337/unet/device/get',
-        data: {
-          _csrf: csrf,
-          token: token
-        },
-        withCredentials: true,
-        contentType: 'json',
-      })
-      .then((response) => {
+    // Get CSRF token.
+    network.getCSRF((csrf) => {
+      // Get Device Token's authenticity.
+      network.tokenValid(token, csrf, (tokenValid) => {
+        // Set state appropriately.
         this.setState({
-          authenticated: response.data.tokenValid,
+          authenticated: tokenValid,
           loading: false
-        })
+        });
       });
     });
 
-    
   }
-
-
-  
-
 
   render() {
 
@@ -68,7 +56,7 @@ class App extends Component {
       if (this.state.authenticated) {
         splash_page = <div className="app"> logged in </div>;
       } else {
-        splash_page = <div className="app"> <LoginBox /> </div>;
+        splash_page = <div className="app"> <LoginBox login={this.isAuthenticated.bind(this)} /> </div>;
       }
     }
     
@@ -77,7 +65,7 @@ class App extends Component {
       <div>
         {splash_page}
       </div>
-      );
+    );
   }
 }
 
