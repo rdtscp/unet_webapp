@@ -70,6 +70,7 @@ export default class LoginBox extends Component {
             .then((response) => {
                 alert(response.data.msg)
                 if (response.data.token) {
+                    this.props.login(true)
                     localStorage.setItem('token', response.data.token);
                 }
             });
@@ -109,6 +110,7 @@ export default class LoginBox extends Component {
                 alert(response.data.msg)
                 if (response.data.token) {
                     localStorage.setItem('token', response.data.token);
+                    this.props.login();
                 }
             });
         });
