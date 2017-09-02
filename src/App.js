@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
 import LoginBox from './components/login/LoginBox.js';
+import ChatApp from './components/unetChat/ChatApp.js';
 import network from './components/common/networkHelper.js';
 
 
@@ -53,7 +54,7 @@ class App extends Component {
       splash_page = <div className="app"> <p> Loading Please Wait... </p> </div>;
     } else {
       if (this.state.authenticated) {
-        splash_page = <div className="app"> logged in </div>;
+        splash_page = <div className="app"> <ChatApp /> </div>;
       } else {
         splash_page = <div className="app"> <LoginBox login={this.isAuthenticated.bind(this)} /> </div>;
       }
