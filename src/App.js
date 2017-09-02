@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
-import axios from 'axios';
 import LoginBox from './components/login/LoginBox.js';
-import network from './helpers/networkHelper.js';
+import network from './components/common/networkHelper.js';
 
 
 /* class to define landing page of Application.

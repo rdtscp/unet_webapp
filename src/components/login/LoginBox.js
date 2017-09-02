@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery';
 import axios from 'axios';
+import network from '../common/networkHelper.js';
 require('./LoginBox.css');
 
 export default class LoginBox extends Component {
@@ -40,22 +41,10 @@ export default class LoginBox extends Component {
 
     register() {
 
-        function getCRSF(cb) {
-            axios({
-              method:'GET',
-              url:'http://api.localhost:1337/csrfToken',
-              withCredentials: true,
-              contentType: 'json',
-            })
-            .then((response) => {
-              cb(response.data._csrf);
-            });
-          }
-
         var uname = document.getElementById("log_uname").value;
         var pword = document.getElementById("log_pword").value;
         
-        getCRSF((csrf) => {
+        network.getCSRF((csrf) => {
             axios({
                 method: 'POST',
                 url: 'http://api.localhost:1337/unet/user/create',
@@ -79,22 +68,10 @@ export default class LoginBox extends Component {
 
     login() {
 
-        function getCRSF(cb) {
-            axios({
-              method:'GET',
-              url:'http://api.localhost:1337/csrfToken',
-              withCredentials: true,
-              contentType: 'json',
-            })
-            .then((response) => {
-              cb(response.data._csrf);
-            });
-          }
-
         var uname = document.getElementById("log_uname").value;
         var pword = document.getElementById("log_pword").value;
         
-        getCRSF((csrf) => {
+        network.getCSRF((csrf) => {
             axios({
                 method: 'POST',
                 url: 'http://api.localhost:1337/unet/user/get',
