@@ -8,7 +8,7 @@ export default class ComposeMsg extends Component {
     }
 
     composeNewMsg() {
-        alert('compose new message')
+        alert('compose new message');
     }
 
     render() {

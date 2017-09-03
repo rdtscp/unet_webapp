@@ -8,7 +8,7 @@ export default class Settings extends Component {
     }
 
     showSettings() {
-        alert('showing settings')
+        alert('showing settings');
     }
 
     render() {
