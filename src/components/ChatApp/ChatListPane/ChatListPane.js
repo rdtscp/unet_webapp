@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import Header from '../_common/Header.js'
+import ChatsList from './ChatsList/ChatsList.js';
 
 import '../_common/common.css';
 
@@ -14,6 +16,7 @@ export default class ChatListPane extends Component {
         return (
             <div className="left-pane">
                 <Header type='ChatList' />
+                <ChatsList />
             </div>
         );
     }
