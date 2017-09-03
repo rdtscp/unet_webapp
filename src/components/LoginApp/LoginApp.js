@@ -13,7 +13,7 @@ export default class LoginApp extends Component {
 
     // Passes authentication call up Component stack.
     isAuthenticated() {
-        this.props.login();
+        this.props.auth();
     }
 
     render() {
