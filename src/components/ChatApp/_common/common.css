@@ -1,12 +1,38 @@
 .header {
     height: 68px;
     padding: 5px;
-    border: 1px solid #000001;
 }
+/* https://stackoverflow.com/questions/28296517/how-to-customize-bootstrap-3-tab-color */
+.nav-tabs{
+    background-color:#1b1b1c;
+}
+.tab-content{
+      background-color:black;
+      color:black;
+      padding:5px
+}
+a {
+    color: #60519C;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    background-color: black;
+    color: #B3561F;
+}
+.nav-tabs > li > a{
+    border: medium none;
+    
+}
+active {
+    background-color: black;
+}
+.nav-tabs > li > a:hover{
+      color:#B3561F;
+}
+/****************/
 .right-pane {
     margin-left: 336px;
     height: 100%;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     overflow: hidden;
     flex: 1;
     display: flex;
@@ -16,7 +42,7 @@
     width: 336px;
     height: 100%;
     float: left;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     display: flex;
     flex-direction: column;
 }
