@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../_common/common.css';
+import './LoginApp.css';
 
 import LoginBox from './LoginBox/LoginBox.js';
 
@@ -11,6 +11,7 @@ export default class LoginApp extends Component {
         super(props);
     }
 
+    // Passes authentication call up Component stack.
     isAuthenticated() {
         this.props.login();
     }
@@ -18,7 +19,7 @@ export default class LoginApp extends Component {
     render() {
         return (
             <div className="app">
-                <LoginBox login={this.isAuthenticated.bind(this)} />
+                <LoginBox auth={this.isAuthenticated.bind(this)} />
             </div>
         );
     }

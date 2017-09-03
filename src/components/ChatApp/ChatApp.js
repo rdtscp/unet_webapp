@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-
-import ChatListPane from './ChatListPane/ChatListPane.js';
-import ChatPane from './ChatPane/ChatPane.js';
-
-import '../_common/common.css';
+import LeftPane from './LeftPane/LeftPane.js';
+import RightPane from './RightPane/RightPane.js';
 
 export default class ChatApp extends Component {
 
@@ -15,8 +11,8 @@ export default class ChatApp extends Component {
     render() {
         return (
             <div className="app">
-                <ChatListPane />
-                <ChatPane />
+                <LeftPane />
+                <RightPane />
             </div>
         );
     }
