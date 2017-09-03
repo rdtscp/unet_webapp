@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/styles.css';
+import './RightPane.css';
 
 export default class RightPane extends Component {
     
@@ -10,7 +10,7 @@ export default class RightPane extends Component {
     render() {
         return (
             <div className="right-pane">
-                right pane
+                
             </div>
         );
     }
