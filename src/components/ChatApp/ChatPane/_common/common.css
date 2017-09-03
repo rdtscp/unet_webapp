@@ -32,3 +32,8 @@ div{
     min-height: 20px;
     width: 100%;
 }
+@media all and (max-height: 218px) {
+    .chat-footer {
+        display: none;
+    }
+  }

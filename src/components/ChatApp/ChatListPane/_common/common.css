@@ -1,0 +1,4 @@
+.list-body {
+    flex: 2;
+    overflow-y: scroll;
+}
