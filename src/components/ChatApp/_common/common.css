@@ -1,5 +1,5 @@
 .header {
-    min-height: 68px;
+    height: 68px;
     padding: 5px;
     border: 1px solid white;
 }
@@ -17,4 +17,6 @@
     height: 100%;
     float: left;
     border: 1px solid white;
+    display: flex;
+    flex-direction: column;
 }
