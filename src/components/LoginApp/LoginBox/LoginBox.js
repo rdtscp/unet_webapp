@@ -85,7 +85,7 @@ export default class LoginBox extends Component {
                 alert(response.data.msg)
                 if (response.data.token) {
                     localStorage.setItem('token', response.data.token);
-                    this.props.login();
+                    this.props.auth();
                 }
             });
         });

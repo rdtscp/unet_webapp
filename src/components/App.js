@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import LoginApp from './components/LoginApp/LoginApp.js';
-import ChatApp from './components/ChatApp/ChatApp.js';
-import network from './components/_common/networkHelper.js';
+import network from './_common/networkHelper.js';
+
+import LoginApp from './LoginApp/LoginApp.js';
+import ChatApp from './ChatApp/ChatApp.js';
+
 
 
 /* class to define landing page of Application.
@@ -15,6 +17,9 @@ export default class App extends Component {
 
   constructor() {
     super();
+    /*    This state should manage whether the ChatApp or LoginApp is displayed.
+     *  The state should be changeable by the LoginApp, and the ChatApp (should requests return repeated errors).
+     */
     this.state = {
       authenticated: true,
       loading: true
@@ -51,11 +56,11 @@ export default class App extends Component {
     } else {
       if (this.state.authenticated) {
         return (
-          <ChatApp />
+          <ChatApp auth={this.isAuthenticated.bind(this)} />
         );
       } else {
         return (
-          <LoginApp login={this.isAuthenticated.bind(this)} />
+          <LoginApp auth={this.isAuthenticated.bind(this)} />
         );
       }
     }
