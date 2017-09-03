@@ -51,10 +51,20 @@ export default class ChatsList extends Component {
     render() {
         return (
             <div className="list-body">
+                <ul className="list-unstyled">
                 {this.state.chats.map((chatEntry) => {
                     {/* Will return a <ChatListEntry /> at some point instead. */}
-                    return <div key={chatEntry.id}> {chatEntry.last_msg} - {chatEntry.last_active} </div> ;
+                    return(
+                        <li className="media entry chat-entry" key={chatEntry.id}>
+                            <img className="d-flex mr-3" src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
+                            <div className="media-body">
+                            <strong className="username">{chatEntry.friend.username}</strong>&nbsp;<small className="text-muted timestamp">{chatEntry.last_active}</small>
+                            <p> <i className="last_msg">{chatEntry.last_msg}</i> </p>
+                            </div>
+                        </li>
+                    );
                 })}
+                </ul>
             </div>
         );
     }

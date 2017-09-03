@@ -2,4 +2,19 @@
     flex: 2;
     overflow-y: scroll;
     padding: 0px;
+    padding-top: 8px;
+}
+.chat-entry {
+    padding-right: 2px;
+    border-bottom: 1px solid white;
+}
+.timestamp {
+    float: right;
+    color: white;
+}
+.username {
+    color: #999999;
+}
+.last_msg {
+    color: #B3561F;
 }
