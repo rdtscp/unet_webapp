@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import $ from 'jquery';
-import LoginBox from './components/login/LoginBox.js';
-import ChatApp from './components/unetChat/ChatApp.js';
+import LoginApp from './components/LoginApp/LoginApp.js';
+import ChatApp from './components/ChatApp/ChatApp.js';
 import network from './components/common/networkHelper.js';
 
 
@@ -12,7 +11,7 @@ import network from './components/common/networkHelper.js';
  * and presents components appropriately.
  * 
  */
-class App extends Component {
+export default class App extends Component {
 
   constructor() {
     super();
@@ -47,27 +46,18 @@ class App extends Component {
   }
 
   render() {
-
-    let splash_page;
-
     if (this.state.loading) {
-      splash_page = <div className="app"> <p> Loading Please Wait... </p> </div>;
+    return (<p> Loading Please Wait... </p>);
     } else {
       if (this.state.authenticated) {
-        splash_page = <div className="app"> <ChatApp /> </div>;
+        return (
+          <ChatApp />
+        );
       } else {
-        splash_page = <div className="app"> <LoginBox login={this.isAuthenticated.bind(this)} /> </div>;
+        return (
+          <LoginApp login={this.isAuthenticated.bind(this)} />
+        );
       }
     }
-    
-
-    return (
-      <div>
-        {splash_page}
-      </div>
-    );
   }
 }
-
-
-export default App;
