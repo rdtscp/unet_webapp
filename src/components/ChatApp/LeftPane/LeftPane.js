@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Header from './Header/Header.js';
 import './LeftPane.css';
+
+import Header from './Header/Header.js';
+import ListBody from './ListBody/ListBody.js';
 
 export default class LeftPane extends Component {
     
@@ -12,7 +14,7 @@ export default class LeftPane extends Component {
         return (
             <div className="left-pane">
                 <Header />
-                {/* <ListBody /> */}
+                <ListBody />
             </div>
         );
     }
