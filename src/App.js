@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LoginApp from './components/LoginApp/LoginApp.js';
 import ChatApp from './components/ChatApp/ChatApp.js';
-import network from './components/common/networkHelper.js';
+import network from './components/_common/networkHelper.js';
 
 
 /* class to define landing page of Application.
