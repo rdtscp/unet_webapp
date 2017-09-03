@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import network from '..../_common/networkHelper.js';
+import network from './networkHelper.js';
 import axios from 'axios';
 
 import '../_common/common.css';
