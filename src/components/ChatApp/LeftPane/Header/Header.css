@@ -4,21 +4,8 @@
     border: 1px solid white;
 }
 
-.headerUser {
-    float: left;
-    height: 100%;
-    width: 68px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align:center;
-    /* For testing */
-    /* border: 1px solid white; */
-}
-.headerUser:hover {
-    color: #B3561F;
-    cursor: pointer;
-}
+
+
 
 .headerOpts {
     float: right;
