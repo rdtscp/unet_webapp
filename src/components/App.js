@@ -45,6 +45,9 @@ export default class App extends Component {
           authenticated: tokenValid,
           loading: false
         });
+        if (!tokenValid) {
+          localStorage.removeItem('token');
+        }
       });
     });
 
