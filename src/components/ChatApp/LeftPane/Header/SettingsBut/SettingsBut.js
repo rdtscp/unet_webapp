@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Settings.css';
+import './SettingsBut.css';
 
-export default class Settings extends Component {
+export default class SettingsBut extends Component {
     
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export default class Settings extends Component {
 
     render() {
         return (
-            <div className="settingsBut" onClick={this.showSettings}>
+            <div className="settingsBut" onClick={this.props.toggleSettings}>
                 <i className="fa fa-cog fa-2x" aria-hidden="true"></i>
             </div>
         );

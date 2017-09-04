@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './FriendsList.css';
+import './FriendsBut.css';
 
-export default class FriendsList extends Component {
+export default class FriendsBut extends Component {
     
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export default class FriendsList extends Component {
 
     render() {
         return (
-            <div className="friendsBut" onClick={this.showFriends}>
+            <div className="friendsBut" onClick={this.props.toggleFriends}>
                 <i className="fa fa-users fa-2x" aria-hidden="true"></i>
             </div>
         );
