@@ -12,6 +12,20 @@ export default class Overlay extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', this._handleKeyPress);
+    }
+    
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this._handleKeyPress);
+    }
+
+    _handleKeyPress = (e) => {
+        if (e.keyCode === 27) {
+            this.props.close();
+        }
+    }
+
     render() {
 
         var overlay;
