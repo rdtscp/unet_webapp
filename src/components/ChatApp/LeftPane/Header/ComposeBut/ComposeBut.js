@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './ComposeMsg.css';
+import './ComposeBut.css';
 
-export default class ComposeMsg extends Component {
+export default class ComposeBut extends Component {
     
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export default class ComposeMsg extends Component {
 
     render() {
         return (
-            <div className="composeBut" onClick={this.composeNewMsg}>
+            <div className="composeBut" onClick={this.props.toggleCompose}>
                 <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
             </div>
         );

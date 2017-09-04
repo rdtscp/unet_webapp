@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import BurgerMenu from './BurgerMenu/BurgerMenu.js';
-import ComposeMsg from './ComposeMsg/ComposeMsg.js';
-import FriendsList from './FriendsList/FriendsList.js';
-import Settings from './Settings/Settings.js';
+import BurgerBut from './BurgerBut/BurgerBut.js';
+import ComposeBut from './ComposeBut/ComposeBut.js';
+import FriendsBut from './FriendsBut/FriendsBut.js';
+import SettingsBut from './SettingsBut/SettingsBut.js';
 
 import './Header.css';
 
@@ -16,10 +16,10 @@ export default class Header extends Component {
     render() {
         return (
             <div className="header">
-                <BurgerMenu />
-                <ComposeMsg />
-                <FriendsList />
-                <Settings />
+                <BurgerBut toggleBurger={this.props.toggleBurger} />
+                <ComposeBut toggleCompose={this.props.toggleCompose} />
+                <FriendsBut toggleFriends={this.props.toggleFriends} />
+                <SettingsBut toggleSettings={this.props.toggleSettings} />
             </div>
         );
     }

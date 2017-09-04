@@ -1,29 +1,6 @@
 .header {
     height: 68px;
-    /* For testing */
-    border: 1px solid white;
-    display: block;
 }
-
-
-
-
-.headerOpts {
-    float: right;
-    height: 100%;
-    width: 68px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align:center;
-    /* For testing */
-    /* border: 1px solid white; */
-}
-.headerOpts:hover {
-    color: #B3561F;
-    cursor: pointer;
-}
-
 
 div {
     color: white;
