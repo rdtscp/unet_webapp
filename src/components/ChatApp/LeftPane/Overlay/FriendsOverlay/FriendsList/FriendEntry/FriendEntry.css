@@ -1,0 +1,29 @@
+.friendsEntry {
+  height: 64px;
+  width: 400px;
+  border-bottom: 1px solid white;
+}
+
+.friendTitle {
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  float: left;
+}
+
+.friendButs {
+  padding-bottom: 25px;
+  padding-right: 25px;
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  float: right;
+}
