@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './FriendsList.css';
 
+import FriendEntry from './FriendEntry/FriendEntry.js';
+
 import network from './networkHelper.js';
 import axios from 'axios';
 
@@ -40,10 +42,10 @@ export default class FriendsList extends Component {
     }
 
     render() {
-
-        const listItems = this.state.friends.map((friend) =>
+        var friendName = "test name";
+        const listItems = this.state.friends.map((entry) =>
             // Create friend entry, pass data down to props.
-            <li>{friend.id}</li>
+            <FriendEntry json={entry} />
         );
 
         return (
