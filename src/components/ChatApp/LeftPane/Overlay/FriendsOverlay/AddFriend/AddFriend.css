@@ -1,0 +1,15 @@
+
+.addFriendEntry {
+    height: 68px;
+    display: block;
+}
+
+.addFriend {
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    color: white;
+}
