@@ -4,10 +4,7 @@ import './LeftPane.css';
 import Header from './Header/Header.js';
 import ListBody from './ListBody/ListBody.js';
 
-import BurgerOverlay from './Overlays/BurgerOverlay.js';
-import ComposeOverlay from './Overlays/ComposeOverlay.js';
-import FriendsOverlay from './Overlays/FriendsOverlay.js';
-import SettingsOverlay from './Overlays/SettingsOverlay.js';
+import Overlay from './Overlay/Overlay.js';
 
 export default class LeftPane extends Component {
     
@@ -41,22 +38,21 @@ export default class LeftPane extends Component {
     render() {
         var overlay;
         if (this.state.burger) {
-            overlay = <BurgerOverlay toggleBurger={this.toggleBurger.bind(this)} />;
+            overlay = <Overlay type={'burger'} close={this.toggleBurger.bind(this)} />;
         }
         else if (this.state.compose) {
-            overlay = <ComposeOverlay toggleCompose={this.toggleCompose.bind(this)} />;
+            overlay = <Overlay type={'compose'} close={this.toggleCompose.bind(this)} />;
         }
         else if (this.state.friends) {
-            overlay = <FriendsOverlay toggleFriends={this.toggleFriends.bind(this)} />;
+            overlay = <Overlay type={'friends'} close={this.toggleFriends.bind(this)} />;
         }
         else if (this.state.settings) {
-            overlay = <SettingsOverlay toggleSettings={this.toggleSettings.bind(this)} />;
+            overlay = <Overlay type={'settings'} close={this.toggleSettings.bind(this)} />;
         } else {
             overlay = <Header toggleBurger={this.toggleBurger.bind(this)} toggleCompose={this.toggleCompose.bind(this)} toggleFriends={this.toggleFriends.bind(this)} toggleSettings={this.toggleSettings.bind(this)} />;
         }
         return (
             <div className="left-pane">
-                {/* Pass methods down to show the different Header button's menus. */}
                 {overlay}
                 <ListBody />
             </div>
