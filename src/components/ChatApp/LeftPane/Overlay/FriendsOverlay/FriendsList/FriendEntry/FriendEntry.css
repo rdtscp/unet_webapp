@@ -1,10 +1,10 @@
-.friendsEntry {
+.friendEntry {
   height: 64px;
   width: 400px;
   border-bottom: 1px solid white;
 }
 
-.friendTitle {
+.friendAvatar {
   height: 100%;
   width: auto;
   display: flex;
@@ -16,14 +16,7 @@
 }
 
 .friendButs {
-  padding-bottom: 25px;
   padding-right: 25px;
-  height: 100%;
-  width: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   color: black;
   float: right;
 }
