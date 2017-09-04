@@ -39,8 +39,8 @@ export default class LoginBox extends Component {
 
     register() {
 
-        var uname = document.getElementById("log_uname").value;
-        var pword = document.getElementById("log_pword").value;
+        var uname = document.getElementById("reg_uname").value;
+        var pword = document.getElementById("reg_pword").value;
         
         network.getCSRF((csrf) => {
             axios({
