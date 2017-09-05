@@ -45,7 +45,7 @@ export default class FriendsList extends Component {
         // Create a list of FriendEntrys.
         const friendList = this.state.friendships.map((entry) =>
             // Create friend entry, pass data and add/remove from Chat method down.
-            <FriendEntry addChatMember={this.props.addChatMember} rmChatMember={this.props.rmChatMember} data={entry} key={entry.id} />
+            <FriendEntry createChat={this.props.createChat} addChatMember={this.props.addChatMember} rmChatMember={this.props.rmChatMember} data={entry} key={entry.id} />
         );
 
         return (
