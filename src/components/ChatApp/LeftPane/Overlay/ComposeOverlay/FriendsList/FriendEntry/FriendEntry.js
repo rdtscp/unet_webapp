@@ -17,14 +17,14 @@ export default class FriendEntry extends Component {
         this.setState({
             added: true
         });
-        this.props.addChatMember(this.props.data)
+        this.props.addChatMember(this.props.data.friend.id)
     }
 
     removeFromChat = () => {
         this.setState({
             added: false
         });
-        this.props.rmChatMember(this.props.data)
+        this.props.rmChatMember(this.props.data.friend.id)
     }
     
     render() {

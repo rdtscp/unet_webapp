@@ -1,9 +1,11 @@
-.header {
+
+.createChatEntry {
     height: 68px;
     display: block;
+    border-bottom: 1px solid white;
 }
 
-.headerTitle {
+.createChat {
     height: 100%;
     width: auto;
     display: flex;
@@ -11,5 +13,4 @@
     align-items: center;
     text-align:center;
     color: white;
-    float: left;
 }
