@@ -33,8 +33,8 @@ export default class ComposeOverlay extends Component {
     checkChat = () => {
         // Check that chat has name if more than one member.
         var chat_name = document.getElementById('chatName').value;
-        if (chat_name == "") {
-            if (this.state.chatMembers.length == 0) {
+        if (chat_name === "") {
+            if (this.state.chatMembers.length === 0) {
                 alert('Cannot create an empty chat.')
             }
             else if (this.state.chatMembers.length > 1) {
@@ -79,7 +79,7 @@ export default class ComposeOverlay extends Component {
             <div id="FriendsOverlay">
                 <Header type="compose" title="New Chat" close={this.props.close} />
                 <CreateChat createChat={this.checkChat} />
-                <FriendsList addChatMember={this.addChatMember} rmChatMember={this.rmChatMember} />
+                <FriendsList createChat={this.createChat} addChatMember={this.addChatMember} rmChatMember={this.rmChatMember} />
             </div>
         );
     }
