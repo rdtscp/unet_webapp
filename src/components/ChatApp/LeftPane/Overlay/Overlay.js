@@ -43,6 +43,9 @@ export default class Overlay extends Component {
             case 'settings':
                 overlay = <SettingsOverlay close={this.props.close} />
                 break;
+            default:
+                overlay = null;
+                break;
         }
 
         return (
