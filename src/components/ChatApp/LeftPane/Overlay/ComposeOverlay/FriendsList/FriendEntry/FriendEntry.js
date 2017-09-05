@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './FriendEntry.css';
 
-import network from './networkHelper.js';
-import axios from 'axios';
-
 export default class FriendEntry extends Component {
     
     constructor(props) {
@@ -32,17 +29,17 @@ export default class FriendEntry extends Component {
         var addremove = null;
         if (this.state.added) {
             addremove =  <div className="friendButs">
-                             <a className="button is-small is-danger" onClick={this.removeFromChat}>Remove</a>
+                             <a className="button is-small is-danger" onClick={this.removeFromChat}>Remove</a> &nbsp; <a className="button is-small is-success" onClick={this.props.createChat(this.props.data.friend.username)}>Compose</a>
                          </div>;
         } else {
             addremove =  <div className="friendButs">
-                             <a className="button is-small is-success" onClick={this.addToChat}>Add</a>
+                             <a className="button is-small is-info" onClick={this.addToChat}>Add</a> &nbsp; <a className="button is-small is-success" onClick={this.props.createChat(this.props.data.friend.username)}>Compose</a>
                          </div>;
         }
         return (
             <div className="friendEntry" key={this.props.data.id} id={this.props.data.id}>
                 <div className="friendAvatar">
-                    <img src="http://bulma.io/images/placeholders/64x64.png" alt="Image" />
+                    <img src="http://bulma.io/images/placeholders/64x64.png" alt="avatar" />
                 </div>
                 <div>
                     <div>
