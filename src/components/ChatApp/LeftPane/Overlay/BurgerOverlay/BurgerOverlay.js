@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Header from '../Header/Header.js';
-import CloseBut from '../Header/CloseBut/CloseBut.js';
 
 export default class BurgerOverlay extends Component {
     
@@ -17,8 +16,8 @@ export default class BurgerOverlay extends Component {
     render() {
         return (
             <div id="BurgerMenu">
-            <Header title="More Apps Coming Soon!" close={this.props.close} />
-            <a onClick={this.logout}> logout </a>
+                <Header title="More Apps Coming Soon!" close={this.props.close} />
+                <a onClick={this.logout}> logout </a>
             </div>
         );
     }

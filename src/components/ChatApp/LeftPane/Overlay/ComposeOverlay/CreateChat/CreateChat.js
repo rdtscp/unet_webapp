@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './CreateChat.css';
 
-import axios from 'axios'
-import network from './networkHelper';
-
 export default class AddFriend extends Component {
     
     constructor(props) {

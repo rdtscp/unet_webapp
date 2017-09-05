@@ -14,12 +14,6 @@ export default class FriendsOverlay extends Component {
     }
 
     render() {
-        this.state.friends.push({sender: 'Add Friend'});
-        var friends = this.state.friends.map((friend) => {
-            return  (
-                <li> {friend.sender} </li>
-            );
-        });
         return (
             <div id="FriendsOverlay">
                 <Header title="Friends List" close={this.props.close} />
