@@ -11,12 +11,12 @@ export default class FriendsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            friends: []
+            friendships: []
         }
     }
 
+    // Retrieve list of Friendships, and set the state.
     componentDidMount () {
-        
         var token = localStorage.getItem('token');
         // Get CSRF token.
         network.getCSRF((csrf) => {
@@ -32,25 +32,39 @@ export default class FriendsList extends Component {
                 contentType: 'json',
             })
             .then((response) => {
-                if (response.data.msg) alert(response.data.msg);
-                this.setState({
-                    friends: response.data.friendships
-                });
+                if (response.data.friendships) {
+                    this.setState({
+                        friendships: response.data.friendships
+                    });
+                }
             })
         });
-    
+    }
+
+    // Takes a Friend JSON element to remove, and does so,
+    removeElem = (data) => {
+        const friendsList   = this.state.friendships.splice(0,0);
+        var index           = friendsList.indexOf(data);
+        var newFriendsList  = friendsList.splice(index, 1);
+        this.setState({
+            friendships: newFriendsList
+        });
     }
 
     render() {
-        var friendName = "test name";
-        const listItems = this.state.friends.map((entry) =>
-            // Create friend entry, pass data down to props.
-            <FriendEntry json={entry} />
+
+        var token = localStorage.getItem('token');
+        // Create a list of FriendEntrys.
+        const friendList = this.state.friendships.map((entry) =>
+            // Create friend entry, pass data and remove method down.
+            <FriendEntry remove={this.removeElem} data={entry} key={entry.id} />
         );
+
+
 
         return (
             <div className="friendsListBody">
-                {listItems}
+                {friendList}
             </div>
         );
     }
