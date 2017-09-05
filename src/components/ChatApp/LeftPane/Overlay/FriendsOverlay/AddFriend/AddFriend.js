@@ -33,7 +33,7 @@ export default class AddFriend extends Component {
 
     sendRequest = () => {
         var requestedUser = document.getElementById('addUserInput').value;
-        if (requestedUser != '') {
+        if (requestedUser !== '') {
             document.getElementById('addUserInput').value = '';
             this.processRequest(requestedUser);
         }

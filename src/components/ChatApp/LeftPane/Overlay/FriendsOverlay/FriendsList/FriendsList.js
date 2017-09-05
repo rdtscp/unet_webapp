@@ -53,7 +53,6 @@ export default class FriendsList extends Component {
 
     render() {
 
-        var token = localStorage.getItem('token');
         // Create a list of FriendEntrys.
         const friendList = this.state.friendships.map((entry) =>
             // Create friend entry, pass data and remove method down.
