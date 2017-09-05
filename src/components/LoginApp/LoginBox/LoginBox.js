@@ -72,7 +72,7 @@ export default class LoginBox extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method: 'POST',
-                url: 'http://api.localhost:1337/unet/user/get',
+                url: 'http://api.localhost:1337/unet/device/create',
                 data: {
                     _csrf: csrf,
                     username: uname,
