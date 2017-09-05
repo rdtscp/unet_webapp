@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './FriendEntry.css';
 
+import network from './networkHelper.js';
+import axios from 'axios';
+
 export default class FriendEntry extends Component {
     
     constructor(props) {
@@ -24,16 +27,40 @@ export default class FriendEntry extends Component {
         this.props.rmChatMember(this.props.data.friend.id)
     }
     
+    createChat = () => {
+        var token = localStorage.getItem('token');
+        network.getCSRF((csrf) => {
+            axios({
+                method:'POST',
+                url:'http://api.localhost:1337/unet/chat/create',
+                data: {
+                  _csrf: csrf,
+                  token: token,
+                  members: [this.props.data.friend.id],
+                  chatName: this.props.data.friend.username
+                },
+                withCredentials: true,
+                contentType: 'json',
+            })
+            .then((response) => {
+                if (response.data.msg) {
+                    alert(response.data.msg)
+                    window.location.reload();
+                }
+            })
+        });
+    }
+
     render() {
         // Generate the Accept/Delete/Remove buttons.
         var addremove = null;
         if (this.state.added) {
             addremove =  <div className="friendButs">
-                             <a className="button is-small is-danger" onClick={this.removeFromChat}>Remove</a> &nbsp; <a className="button is-small is-success" onClick={this.props.createChat(this.props.data.friend.username)}>Compose</a>
+                             <a className="button is-small is-danger" onClick={this.removeFromChat}>Remove</a> &nbsp; <a className="button is-small is-success" onClick={this.createChat}>Compose</a>
                          </div>;
         } else {
             addremove =  <div className="friendButs">
-                             <a className="button is-small is-info" onClick={this.addToChat}>Add</a> &nbsp; <a className="button is-small is-success" onClick={this.props.createChat(this.props.data.friend.username)}>Compose</a>
+                             <a className="button is-small is-info" onClick={this.addToChat}>Add</a> &nbsp; <a className="button is-small is-success" onClick={this.createChat}>Compose</a>
                          </div>;
         }
         return (
