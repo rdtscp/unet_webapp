@@ -45,7 +45,9 @@ export default class FriendEntry extends Component {
             .then((response) => {
                 if (response.data.msg) {
                     alert(response.data.msg)
-                    window.location.reload();
+                    if (response.data.err == false && response.data.warning == false) {
+                        window.location.reload();
+                    }
                 }
             })
         });
