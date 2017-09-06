@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './ListBody.css';
 
+import ChatEntry from './ChatEntry/ChatEntry.js';
+
 import axios from 'axios';
 import network from './networkHelper.js';
 
@@ -30,9 +32,9 @@ export default class ListBody extends Component {
                 contentType: 'json',
             })
             .then((response) => {
-                if (response.data.chats) {
+                if (response.data.user.chats) {
                     this.setState({
-                        chats: response.data.chats
+                        chats: response.data.user.chats
                     });
                 }
             })
@@ -40,9 +42,16 @@ export default class ListBody extends Component {
     }
 
     render() {
+
+        // Create a list of FriendEntrys.
+        const chatList = this.state.chats.map((chat) =>
+            // Create friend entry, pass data and remove method down.
+            <ChatEntry data={chat} key={chat.id} />
+        );
+
         return (
             <div className="list-body">
-
+                {chatList}
             </div>
         );
     }
