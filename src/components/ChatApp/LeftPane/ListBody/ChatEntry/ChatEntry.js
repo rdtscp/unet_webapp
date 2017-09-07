@@ -12,13 +12,12 @@ export default class FriendEntry extends Component {
         this.props.openChat(this.props.data)
     }
 
-
-
     render() {
 
-        var chatName = 'Loading...';
-        if (this.props.data.name == null) {
-
+        var chatName = this.props.data.name;
+        if (this.props.data.name.length > 19) {
+            chatName = chatName.substring(0, 16);
+            chatName += '...';
         }
 
         return (
@@ -31,7 +30,7 @@ export default class FriendEntry extends Component {
                     </div>
                 <div className="friendContent">
                     <div className="contentTop">
-                        {this.props.data.name}
+                        {chatName}
                     </div>
                     
                     <div className="contentBot">
