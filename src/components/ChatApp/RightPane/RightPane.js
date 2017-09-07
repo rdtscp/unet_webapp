@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './RightPane.css';
 
-import axios from 'axios';
-import network from './networkHelper.js';
-
 import Header from './Header/Header.js';
 
 export default class RightPane extends Component {
@@ -23,7 +20,7 @@ export default class RightPane extends Component {
         } else {
             return (
                 <div className="right-pane">
-                    {this.props.chat}
+                    {this.props.chat.name}
                 </div>
             );
         }
