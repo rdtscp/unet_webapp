@@ -54,7 +54,7 @@ export default class LeftPane extends Component {
         return (
             <div className="left-pane">
                 {overlay}
-                <ListBody />
+                <ListBody openChat={this.props.openChat} />
             </div>
         );
     }
