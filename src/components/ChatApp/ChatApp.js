@@ -27,7 +27,7 @@ export default class ChatApp extends Component {
         return (
             <div className="app">
                 <LeftPane openChat={this.openChat} />
-                <RightPane currChatID={this.state.currChatID} />
+                <RightPane chat ={this.state.currChatID} />
             </div>
         );
     }
