@@ -8,9 +8,11 @@ export default class FriendEntry extends Component {
         super(props);
     }
 
-    selectUser = () => {
-        alert('selected chat: ')
+    openChat = () => {
+        this.props.openChat(this.props.data)
     }
+
+
 
     render() {
 
@@ -20,7 +22,7 @@ export default class FriendEntry extends Component {
         }
 
         return (
-            <div className="chatEntry" key={this.props.data.id} id={this.props.data.id}>
+            <div className="chatEntry" key={this.props.data.id} id={this.props.data.id} onMouseDown={this.openChat}>
                 <div className="chatAvatar">
                     <img src="http://bulma.io/images/placeholders/64x64.png" alt="Image" />
                 </div>

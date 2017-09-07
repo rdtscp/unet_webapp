@@ -46,7 +46,7 @@ export default class ListBody extends Component {
         // Create a list of FriendEntrys.
         const chatList = this.state.chats.map((chat) =>
             // Create friend entry, pass data and remove method down.
-            <ChatEntry data={chat} key={chat.id} />
+            <ChatEntry data={chat} key={chat.id} openChat={this.props.openChat} />
         );
 
         return (
