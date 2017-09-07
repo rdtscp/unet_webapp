@@ -9,19 +9,25 @@ export default class ChatApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            openChat: null
+            currChatID: null
         }
     }
 
     openChat = (chat) => {
-        alert('open chat: ' + chat.id + ' ' + chat.name)
+        alert('open chat: ' + chat.id)
+
+        localStorage.setItem('currChatID', chat.id)
+
+        this.setState({
+            currChatID: chat.id
+        });
     }
 
     render() {
         return (
             <div className="app">
                 <LeftPane openChat={this.openChat} />
-                <RightPane openChat={this.state.openChat} />
+                <RightPane currChatID={this.state.currChatID} />
             </div>
         );
     }
