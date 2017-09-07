@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './RightPane.css';
 
-import Header from './Header/Header.js';
+import ChatHeader from './ChatHeader/ChatHeader.js';
+import ChatInput from './ChatInput/ChatInput.js';
 
 export default class RightPane extends Component {
     
@@ -20,7 +21,11 @@ export default class RightPane extends Component {
         } else {
             return (
                 <div className="right-pane">
-                    {this.props.chat.name}
+                    <ChatHeader chat={this.props.chat} />
+                    <div className="chat-body" id="chat-body">
+
+                    </div>
+                    <ChatInput />
                 </div>
             );
         }
