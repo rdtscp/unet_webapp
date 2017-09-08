@@ -16,7 +16,7 @@ export default class Message extends Component {
                             {this.props.chat.message}
                         </div>
                         <div className="media-right">
-                            <a className="time-stamp"><sub className="time-stamp" onclick="alert(\' modal showing message info \');"> <span> 12/34/5678 </span> </sub></a>
+                            <a className="time-stamp"><sub className="time-stamp"> <span> {this.props.chat.timestamp}</span> </sub></a>
                         </div>
                     </article>
                 </div>
