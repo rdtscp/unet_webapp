@@ -13,7 +13,7 @@ export default class Message extends Component {
                 <div className="bubble">
                     <article className="media">
                         <div className={"media-content " + this.props.side} id="replace">
-                            message.message
+                            {this.props.chat.message}
                         </div>
                         <div className="media-right">
                             <a className="time-stamp"><sub className="time-stamp" onclick="alert(\' modal showing message info \');"> <span> 12/34/5678 </span> </sub></a>
