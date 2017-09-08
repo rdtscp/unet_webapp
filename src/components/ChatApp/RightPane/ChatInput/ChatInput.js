@@ -7,24 +7,30 @@ export default class ChatInput extends Component {
         super(props);
     }
 
+    // Add/Remove listeners for this component.
     componentDidMount() {
         document.addEventListener('keydown', this._handleKeyPress);
     }
-    
     componentWillUnmount() {
         document.removeEventListener('keydown', this._handleKeyPress);
     }
 
+    // Pass the message up to the RightPane component to process sending the message.
+    sendMessage = (msg) => {
+        this.props.sendMsg(msg);
+    }
+
+    // Handles all key presses in the input field.
     _handleKeyPress = (e) => {
         var input = document.getElementById('input');
+        // If Enter key pressed without shift held.
         if (e.keyCode === 13 && !e.shiftKey) {
             e.preventDefault();
             var msg = input.innerHTML;
-            alert(msg)
-        }
-        else if (e.keyCode == 38 && input.innerHTML == '') {
-            alert('Get latest message.');
-            //document.getElementById('input').innerHTML = (document.getElementById(latest_msg +  '_content').innerHTML);
+            if (input.innerHTML != '') {
+                this.sendMessage(msg);
+                document.getElementById('input').innerHTML = '';
+            }
         }
     }
 
