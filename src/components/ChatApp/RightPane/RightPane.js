@@ -5,6 +5,9 @@ import ChatHeader from './ChatHeader/ChatHeader.js';
 import ChatInput from './ChatInput/ChatInput.js';
 import Message from './Message/Message.js';
 
+import network from './networkHelper.js';
+import axios from 'axios';
+
 export default class RightPane extends Component {
     
     constructor(props) {
@@ -13,6 +16,24 @@ export default class RightPane extends Component {
 
     sendMessage = (msg) => {
         alert(msg)
+        var token = localStorage.getItem('token');
+        network.getCSRF((csrf) => {
+            axios({
+                method:'POST',
+                url:'http://api.localhost:1337/unet/message/create',
+                data: {
+                  _csrf: csrf,
+                  token: token,
+                  id: this.props.chat.id,
+                  message: msg
+                },
+                withCredentials: true,
+                contentType: 'json',
+            })
+            .then((response) => {
+                console.log(response.data)
+            })
+        });
     }
 
     render() {
