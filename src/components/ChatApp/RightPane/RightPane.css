@@ -1,7 +1,5 @@
 .right-pane {
-    margin-left: 400px;
     height: 100%;
-    min-width: 800px;
     /* For testing */
     border: 1px solid white;
     display: flex;
@@ -9,6 +7,7 @@
 }
 
 .chat-body {
+    min-width: 400px;    
     flex: 2 ;
     overflow: auto;
     font-size: 13.6px;
@@ -16,3 +15,19 @@
     padding-left: 40px;
     padding-bottom: 40px;
 }
+
+
+/**/
+
+.left{
+    color: #60519C;
+}
+.right{
+    color: #B3561F;
+}
+
+/*
+
+
+
+*/
