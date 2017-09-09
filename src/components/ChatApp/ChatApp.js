@@ -4,14 +4,17 @@ import RightPane from './RightPane/RightPane.js';
 
 import axios from 'axios';
 import network from './networkHelper.js';
+import io from 'socket.io-client';
 
 import 'bulma/css/bulma.css';
+
 
 export default class ChatApp extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            user: null,
             currChat: null,
             chats: []
         }
@@ -33,10 +36,18 @@ export default class ChatApp extends Component {
                 contentType: 'json',
             })
             .then((response) => {
+                if (response.data.user) {
+                    // Set state.
+                    this.setState({
+                        user: response.data.user.id
+                    });
+                }
                 if (response.data.user.chats) {
+                    // Set state.
                     this.setState({
                         chats: response.data.user.chats
                     });
+                    // Subscribe to all the chats.
                 }
             })
         });
@@ -95,8 +106,8 @@ export default class ChatApp extends Component {
     render() {
         return (
             <div className="app">
-                <LeftPane openChat={this.openChat} chats={this.state.chats} />
-                <RightPane chat={this.state.currChat} />
+                <LeftPane openChat={this.openChat} chats={this.state.chats} user={this.state.user} />
+                <RightPane chat={this.state.currChat} user={this.state.user} />
             </div>
         );
     }
