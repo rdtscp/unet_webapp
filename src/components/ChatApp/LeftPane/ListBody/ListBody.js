@@ -10,9 +10,6 @@ export default class ListBody extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-            chats: []
-        }
     }
 
     render() {
@@ -20,7 +17,7 @@ export default class ListBody extends Component {
         // Create a list of FriendEntrys.
         const chatList = this.props.chats.map((chat) =>
             // Create friend entry, pass data and remove method down.
-            <ChatEntry data={chat} key={chat.id} openChat={this.props.openChat} />
+            <ChatEntry data={chat} key={chat.id} openChat={this.props.openChat} user={this.props.user} />
         );
 
         return (

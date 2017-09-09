@@ -15,7 +15,6 @@ export default class RightPane extends Component {
     }
 
     sendMessage = (msg) => {
-        alert(msg)
         var token = localStorage.getItem('token');
         network.getCSRF((csrf) => {
             axios({
@@ -48,7 +47,7 @@ export default class RightPane extends Component {
             // Get last 10 messages.
             var messages = this.props.chat.messages.map((entry) =>
                 // Create friend entry, pass data and add/remove from Chat method down.
-                <Message side='left' chat={entry} />
+                <Message user={this.props.user} chat={this.props.chat} message={entry} />
             );
             return (
                 <div className="right-pane">
