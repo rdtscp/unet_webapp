@@ -12,13 +12,36 @@ export default class ChatApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currChat: null
+            currChat: null,
+            chats: []
         }
     }
 
     componentDidMount() {
-        var currChatID  = localStorage.getItem('currChatID');
         var token       = localStorage.getItem('token');
+        // Get User & its Chats.
+        network.getCSRF((csrf) => {
+            // Get Friends.
+            axios({
+                method:'POST',
+                url:'http://api.localhost:1337/unet/user/get',
+                data: {
+                  _csrf: csrf,
+                  token: token
+                },
+                withCredentials: true,
+                contentType: 'json',
+            })
+            .then((response) => {
+                if (response.data.user.chats) {
+                    this.setState({
+                        chats: response.data.user.chats
+                    });
+                }
+            })
+        });
+        var currChatID  = localStorage.getItem('currChatID');
+        // Get the current Chat if it exists.
         if (currChatID) {
             network.getCSRF((csrf) => {
                 axios({
@@ -43,6 +66,7 @@ export default class ChatApp extends Component {
         }
     }
 
+    // Get a Chats info and set the state to load it into the right-pane.
     openChat = (chat) => {
         var token = localStorage.getItem('token');
         network.getCSRF((csrf) => {
@@ -71,7 +95,7 @@ export default class ChatApp extends Component {
     render() {
         return (
             <div className="app">
-                <LeftPane openChat={this.openChat} />
+                <LeftPane openChat={this.openChat} chats={this.state.chats} />
                 <RightPane chat={this.state.currChat} />
             </div>
         );
