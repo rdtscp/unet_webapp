@@ -19,18 +19,16 @@ export default class LeftPane extends Component {
         }
     }
 
+    // Left pane overlays.
     toggleBurger() {
         this.setState({burger: !this.state.burger});
     }
-
     toggleCompose() {
         this.setState({compose: !this.state.compose});
     }
-
     toggleFriends() {
         this.setState({friends: !this.state.friends});
     }
-
     toggleSettings() {
         this.setState({settings: !this.state.settings});
     }
@@ -54,7 +52,7 @@ export default class LeftPane extends Component {
         return (
             <div className="left-pane">
                 {overlay}
-                <ListBody openChat={this.props.openChat} />
+                <ListBody openChat={this.props.openChat} chats={this.props.chats} />
             </div>
         );
     }
