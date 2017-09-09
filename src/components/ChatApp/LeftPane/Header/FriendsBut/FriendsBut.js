@@ -7,10 +7,6 @@ export default class FriendsBut extends Component {
         super(props);
     }
 
-    showFriends() {
-        alert('show friends list');
-    }
-
     render() {
         return (
             <div className="friendsBut" onClick={this.props.toggleFriends}>
