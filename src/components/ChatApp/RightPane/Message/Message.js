@@ -8,15 +8,26 @@ export default class Message extends Component {
     }
 
     render() {
+
+        var colour = 'left';
+        if (this.props.user == this.props.message.sender) {
+            colour = 'right';
+        }
+
+        var message = this.props.message.message;
+        if (this.props.chat.users.length > 2) {
+            message = this.props.message.username + ': ' + this.props.message.message
+        }
+
         return (
-            <div className={"msg-" + this.props.side} id="replace">
+            <div className={"msg-" + colour} id="replace">
                 <div className="bubble">
                     <article className="media">
-                        <div className={"media-content " + this.props.side} id="replace">
-                            {this.props.chat.message}
+                        <div className={"media-content " + colour} id="replace">
+                            {message}
                         </div>
                         <div className="media-right">
-                            <a className="time-stamp"><sub className="time-stamp"> <span> {this.props.chat.timestamp}</span> </sub></a>
+                            <a className="time-stamp"><sub className="time-stamp"> <span> {this.props.message.timestamp}</span> </sub></a>
                         </div>
                     </article>
                 </div>
