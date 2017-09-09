@@ -10,7 +10,7 @@ export default class FriendEntry extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            chat: {}
+            chat: null
         }
     }
 
@@ -46,30 +46,44 @@ export default class FriendEntry extends Component {
     }
 
     render() {
+        
+        var chatName    = 'Loading...';
+        var colour      = 'left';
+        var message     = '';
+        var lastActive  = ''; 
 
-        var chatName = this.props.data.name;
-        if (this.props.data.name.length > 19) {
-            chatName = chatName.substring(0, 16);
-            chatName += '...';
-        }
 
-        var colour = 'left';
-        // alert(this.props.data.last_sender + '==' + this.props.user)
-        if (this.props.data.last_sender == this.props.user) {
-            //alert('you sent last msg')
-            colour = 'right';
-        }
+        if (this.state.chat) {
 
-        var message = this.props.data.last_msg;
-        if (message.length > 64) {
-            alert(message.length)
-        }
-        if (this.props.data.isGroup) {
-            if (this.state.chat.last_sender) {
-                message = this.state.chat.last_sender.username + ': ' + message;
-            } else {
-                message = 'Loading...';
+            // Shorten chat name to fit in panel.
+            chatName = this.state.chat.name;
+            if (chatName.length > 19) {
+                chatName = chatName.substring(0, 16);
+                chatName += '...';
             }
+
+            // Determine colour/side of last_msg.
+            var colour = 'left';
+            if (this.state.chat.last_sender.id == this.props.user) {
+                colour = 'right';
+            }
+
+            // Shorten last_msg if necessary
+            var message = this.state.chat.last_msg;
+            if (message.length > 25) {
+                message = message.substring(0, 22);
+                message += '...';
+            }
+
+            if (this.state.chat.users.length > 2) {
+                if (this.state.chat.last_sender) {
+                    message = this.state.chat.last_sender.username + ': ' + message;
+                } else {
+                    message = 'Loading...';
+                }
+            }
+
+            lastActive = this.state.chat.last_active
         }
 
         return (
@@ -78,11 +92,11 @@ export default class FriendEntry extends Component {
                     <img src="http://bulma.io/images/placeholders/64x64.png" alt="Image" />
                 </div>
                 <div className="chatTimestamp">
-                        {this.state.chat.last_active}
+                        {lastActive}
                     </div>
                 <div className="friendContent">
                     <div className="contentTop">
-                        {this.state.chat.name}
+                        {chatName}
                     </div>
                     
                     <div className={"contentBot " + colour}>
