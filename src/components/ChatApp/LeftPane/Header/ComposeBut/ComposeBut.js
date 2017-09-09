@@ -7,10 +7,6 @@ export default class ComposeBut extends Component {
         super(props);
     }
 
-    composeNewMsg() {
-        alert('compose new message');
-    }
-
     render() {
         return (
             <div className="composeBut" onClick={this.props.toggleCompose}>

@@ -7,10 +7,6 @@ export default class SettingsBut extends Component {
         super(props);
     }
 
-    showSettings() {
-        alert('showing settings');
-    }
-
     render() {
         return (
             <div className="settingsBut" onClick={this.props.toggleSettings}>
