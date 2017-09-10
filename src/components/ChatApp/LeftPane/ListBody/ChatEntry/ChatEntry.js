@@ -64,8 +64,10 @@ export default class FriendEntry extends Component {
 
             // Determine colour/side of last_msg.
             var colour = 'left';
-            if (this.state.chat.last_sender.id == this.props.user) {
-                colour = 'right';
+            if (this.state.chat.last_sender) {
+                if (this.state.chat.last_sender.id == this.props.user) {
+                    colour = 'right';
+                }
             }
 
             // Shorten last_msg if necessary
@@ -78,8 +80,6 @@ export default class FriendEntry extends Component {
             if (this.state.chat.users.length > 2) {
                 if (this.state.chat.last_sender) {
                     message = this.state.chat.last_sender.username + ': ' + message;
-                } else {
-                    message = 'Loading...';
                 }
             }
 
