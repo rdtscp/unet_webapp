@@ -8,7 +8,7 @@ const network = {
         return (
             axios({
                 method:'GET',
-                url:'http://api.localhost:1337/csrfToken',
+                url:'http://192.168.1.70:1337/csrfToken',
                 withCredentials: true,
                 contentType: 'json',
             })
@@ -23,7 +23,7 @@ const network = {
         return (
             axios({
                 method:'POST',
-                url:'http://api.localhost:1337/unet/device/get',
+                url:'http://192.168.1.70:1337/unet/device/get',
                 data: {
                   _csrf: csrf,
                   token: token
