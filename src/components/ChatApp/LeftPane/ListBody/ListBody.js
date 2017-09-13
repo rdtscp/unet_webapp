@@ -11,13 +11,13 @@ export default class ListBody extends Component {
     constructor(props) {
         super(props);
     }
-
+    
     render() {
 
         // Create a list of FriendEntrys.
         const chatList = this.props.chats.map((chat) =>
             // Create friend entry, pass data and remove method down.
-            <ChatEntry data={chat} key={chat.id} openChat={this.props.openChat} user={this.props.user} />
+            <ChatEntry io={this.props.io} data={chat} key={chat.id} openChat={this.props.openChat} user={this.props.user} />
         );
 
         return (
