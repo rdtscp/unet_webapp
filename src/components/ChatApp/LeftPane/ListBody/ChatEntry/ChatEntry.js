@@ -49,7 +49,7 @@ export default class FriendEntry extends Component {
             // If the message is for this chat.
             if (msg.chat == chat.id) {
                 if (chat.last_sender == null) {
-                    var temp_sender = { id: null }
+                    var temp_sender = { id: msg.sender, username: msg.username }
                     chat.last_sender = temp_sender;
                 }
                 chat.last_sender.id = msg.sender;
