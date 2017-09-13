@@ -47,7 +47,11 @@ export default class FriendEntry extends Component {
         const { io } = this.props;
         io.socket.on('newMessage', (msg) => {
             var chat = this.state.chat;
+            // If the message is for this chat.
             if (msg.chat == chat.id) {
+                // alert(msg.sender + '   ===   ' + this.props.user);
+                chat.last_sender.id = msg.sender;
+                chat.last_active = msg.timestamp;
                 chat.last_msg = msg.message;
                 this.setState({
                     chat: chat
@@ -76,6 +80,7 @@ export default class FriendEntry extends Component {
             // Determine colour/side of last_msg.
             var colour = 'left';
             if (this.state.chat.last_sender) {
+                // alert(this.state.chat.last_sender.id + ' == ' +  this.props.user)
                 if (this.state.chat.last_sender.id == this.props.user) {
                     colour = 'right';
                 }
