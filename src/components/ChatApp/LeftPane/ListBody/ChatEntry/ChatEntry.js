@@ -38,7 +38,6 @@ export default class FriendEntry extends Component {
                     this.setState({
                         chat: response.data.chat
                     });
-                    console.log(this.state.chat)
                 }
                 
             })
