@@ -48,7 +48,10 @@ export default class FriendEntry extends Component {
             var chat = this.state.chat;
             // If the message is for this chat.
             if (msg.chat == chat.id) {
-                // alert(msg.sender + '   ===   ' + this.props.user);
+                if (chat.last_sender == null) {
+                    var temp_sender = { id: null }
+                    chat.last_sender = temp_sender;
+                }
                 chat.last_sender.id = msg.sender;
                 chat.last_active = msg.timestamp;
                 chat.last_msg = msg.message;
