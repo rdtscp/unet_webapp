@@ -43,6 +43,17 @@ export default class FriendEntry extends Component {
                 
             })
         });
+        // Listen for updates.
+        const { io } = this.props;
+        io.socket.on('newMessage', (msg) => {
+            var chat = this.state.chat;
+            if (msg.chat == chat.id) {
+                chat.last_msg = msg.message;
+                this.setState({
+                    chat: chat
+                });
+            }
+        });
     }
 
     render() {
