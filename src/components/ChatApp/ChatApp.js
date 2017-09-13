@@ -4,10 +4,13 @@ import RightPane from './RightPane/RightPane.js';
 
 import axios from 'axios';
 import network from './networkHelper.js';
-import io from 'socket.io-client';
 
 import 'bulma/css/bulma.css';
 
+var socketIOClient = require('socket.io-client');
+var sailsIOClient = require('sails.io.js');
+var io = sailsIOClient(socketIOClient);
+io.sails.url = 'http://api.localhost:1337';
 
 export default class ChatApp extends Component {
 
@@ -48,6 +51,9 @@ export default class ChatApp extends Component {
                         chats: response.data.user.chats
                     });
                     // Subscribe to all the chats.
+                    this.state.chats.forEach((chat) => {
+                        this.joinChat(chat.id);
+                    });
                 }
             })
         });
@@ -103,11 +109,23 @@ export default class ChatApp extends Component {
         });
     }
 
+    // Subscribes the socket to a chat.
+    joinChat = (chatID) => {
+        var token = localStorage.getItem('token');
+        io.socket.get('/csrfToken', (res) => {
+            var csrf = res._csrf;
+            io.socket.headers = {
+                "x-csrf-token": csrf,
+            };
+            io.socket.post('/unet/chat/subscribe', [token, chatID]);
+        });
+    }
+
     render() {
         return (
             <div className="app">
-                <LeftPane openChat={this.openChat} chats={this.state.chats} user={this.state.user} />
-                <RightPane chat={this.state.currChat} user={this.state.user} />
+                <LeftPane io={io} openChat={this.openChat} chats={this.state.chats} user={this.state.user} />
+                <RightPane io={io} chat={this.state.currChat} user={this.state.user} />
             </div>
         );
     }
