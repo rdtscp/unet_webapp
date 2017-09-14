@@ -29,6 +29,21 @@ export default class ChatApp extends Component {
         // Get the current Chat if it exists.
         var currChatID  = localStorage.getItem('currChatID');
         if (currChatID) this.openChat(currChatID);
+        // Listen for updates.
+        io.socket.on('newMessage', (msg) => {
+            var chat = this.state.currChat
+            // Only update if we are in a chat.
+            if (chat != null) {
+                // If the message is for this chat.
+                if (msg.chat == chat.id) {
+                    var msgs = chat.messages;
+                    msgs.push(msg);
+                    this.setState({
+                        messages: msgs
+                    });
+                }
+            }
+        });
     }
 
     // Get current User (and its chats/friends).

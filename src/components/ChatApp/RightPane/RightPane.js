@@ -37,22 +37,6 @@ export default class RightPane extends Component {
         }
     }
 
-    componentDidMount() {
-        // Listen for updates.
-        const { io } = this.props;
-        io.socket.on('newMessage', (msg) => {
-            var chat = this.props.chat;
-            // If the message is for this chat.
-            if (msg.chat == chat.id) {
-                var msgs = this.state.messages;
-                msgs.push(msg);
-                this.setState({
-                    messages: msgs
-                });
-            }
-        });
-    }
-
     sendMessage = (msg) => {
         var token = localStorage.getItem('token');
         network.getCSRF((csrf) => {
@@ -84,7 +68,7 @@ export default class RightPane extends Component {
 
         } else {
             // Get last 10 messages.
-            var messages = this.state.messages.map((entry) =>
+            var messages = this.props.chat.messages.map((entry) =>
                 // Create friend entry, pass data and add/remove from Chat method down.
                 <Message user={this.props.user} chat={this.props.chat} message={entry} />
             );
