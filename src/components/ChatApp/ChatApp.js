@@ -24,8 +24,16 @@ export default class ChatApp extends Component {
     }
 
     componentDidMount() {
-        var token       = localStorage.getItem('token');
         // Get User & its Chats.
+        this.getUser();
+        // Get the current Chat if it exists.
+        var currChatID  = localStorage.getItem('currChatID');
+        if (currChatID) this.openChat(currChatID);
+    }
+
+    // Get current User (and its chats/friends).
+    getUser = () => {
+        var token       = localStorage.getItem('token');
         network.getCSRF((csrf) => {
             // Get Friends.
             axios({
@@ -57,30 +65,18 @@ export default class ChatApp extends Component {
                 }
             })
         });
-        var currChatID  = localStorage.getItem('currChatID');
-        // Get the current Chat if it exists.
-        if (currChatID) {
-            network.getCSRF((csrf) => {
-                axios({
-                    method:'POST',
-                    url:'http://api.localhost:1337/unet/chat/get',
-                    data: {
-                        id: currChatID,
-                      _csrf: csrf,
-                      token: token
-                    },
-                    withCredentials: true,
-                    contentType: 'json',
-                })
-                .then((response) => {
-                    if (response.data.chat) {
-                        this.setState({
-                            currChat: response.data.chat
-                        });
-                    }
-                });
-            });
-        }
+    }
+
+    // Subscribes the socket to a chat.
+    joinChat = (chatID) => {
+        var token = localStorage.getItem('token');
+        io.socket.get('/csrfToken', (res) => {
+            var csrf = res._csrf;
+            io.socket.headers = {
+                "x-csrf-token": csrf,
+            };
+            io.socket.post('/unet/chat/subscribe', [token, chatID]);
+        });
     }
 
     // Get a Chats info and set the state to load it into the right-pane.
@@ -109,22 +105,10 @@ export default class ChatApp extends Component {
         });
     }
 
-    // Subscribes the socket to a chat.
-    joinChat = (chatID) => {
-        var token = localStorage.getItem('token');
-        io.socket.get('/csrfToken', (res) => {
-            var csrf = res._csrf;
-            io.socket.headers = {
-                "x-csrf-token": csrf,
-            };
-            io.socket.post('/unet/chat/subscribe', [token, chatID]);
-        });
-    }
-
     render() {
         return (
             <div className="app">
-                <LeftPane io={io} openChat={this.openChat} chats={this.state.chats} user={this.state.user} />
+                <LeftPane  io={io} chats={this.state.chats} user={this.state.user} openChat={this.openChat} />
                 <RightPane io={io} chat={this.state.currChat} user={this.state.user} />
             </div>
         );
