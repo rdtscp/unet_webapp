@@ -12,29 +12,6 @@ export default class RightPane extends Component {
     
     constructor(props) {
         super(props);
-        if (props.chat == null) {
-            this.state = {
-                messages: []
-            }
-        } else {
-            this.state = {
-                messages: props.chat.messages
-            }
-        }
-    }
-
-    componentWillReceiveProps() {
-        if (this.props.chat == null) {
-            this.setState({
-                messages: []
-            });
-            console.log(this.state.messages)
-        } else {
-            this.setState({
-                messages: this.props.chat.messages
-            });
-            console.log(this.state.messages)
-        }
     }
 
     sendMessage = (msg) => {
