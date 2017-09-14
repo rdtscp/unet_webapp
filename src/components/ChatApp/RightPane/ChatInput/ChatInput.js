@@ -32,6 +32,9 @@ export default class ChatInput extends Component {
                 document.getElementById('input').innerHTML = '';
             }
         }
+        else if (e.keyCode === 38 && input.innerHTML == '') {
+            input.innerHTML = this.props.lastMessage.message;
+        }
     }
 
     render() {
