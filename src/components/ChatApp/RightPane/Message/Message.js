@@ -18,12 +18,13 @@ export default class Message extends Component {
         if (this.props.chat.users.length > 2) {
             message = this.props.message.username + ': ' + this.props.message.message
         }
+        console.log(message);
 
         return (
-            <div className={"msg-" + colour} id="replace">
+            <div className={"msg-" + colour} id={this.props.message.id}>
                 <div className="bubble">
                     <article className="media">
-                        <div className={"media-content " + colour} id="replace">
+                        <div className={"media-content " + colour} id={this.props.message.id}>
                             {message}
                         </div>
                         <div className="media-right">
