@@ -18,7 +18,6 @@ export default class Message extends Component {
         if (this.props.chat.users.length > 2) {
             message = this.props.message.username + ': ' + this.props.message.message
         }
-        console.log(message);
 
         return (
             <div className={"msg-" + colour} id={this.props.message.id}>
