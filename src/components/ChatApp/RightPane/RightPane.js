@@ -30,7 +30,6 @@ export default class RightPane extends Component {
                 contentType: 'json',
             })
             .then((response) => {
-                console.log(response.data)
             })
         });
     }
@@ -57,7 +56,7 @@ export default class RightPane extends Component {
                         {messages}
 
                     </div>
-                    <ChatInput sendMsg={this.sendMessage} />
+                    <ChatInput lastMessage={this.props.chat.messages[this.props.chat.messages.length -1]} sendMsg={this.sendMessage} />
                 </div>
             );
         }
