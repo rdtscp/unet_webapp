@@ -34,6 +34,14 @@ export default class RightPane extends Component {
         });
     }
 
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom = () => {
+        if (this.messagesEnd) this.messagesEnd.scrollIntoView({ behaviour: 'smooth' });
+    }
+
     render() {
         if (this.props.chat == null) {
             return (
@@ -54,7 +62,7 @@ export default class RightPane extends Component {
                     <div className="chat-body" id="chat-body">
 
                         {messages}
-
+                        <div style={{ float: 'left', clear: 'both' }} ref={(el) => {this.messagesEnd = el; }}></div>
                     </div>
                     <ChatInput lastMessage={this.props.chat.messages[this.props.chat.messages.length -1]} sendMsg={this.sendMessage} />
                 </div>
