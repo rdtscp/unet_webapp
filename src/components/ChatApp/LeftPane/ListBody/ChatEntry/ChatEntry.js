@@ -88,8 +88,13 @@ export default class FriendEntry extends Component {
                 }
             }
 
+
             // Shorten last_msg if necessary
             var message = this.state.chat.last_msg;
+            message = message.split("<br>").join(" ");
+            message = message.split('&nbsp;').join(' ');
+            message = message.split('&lt;').join('<');
+            message = message.split('&gt;').join('>');
             if (message.length > 25) {
                 message = message.substring(0, 22);
                 message += '...';
