@@ -66,7 +66,10 @@ export default class ComposeOverlay extends Component {
                 contentType: 'json',
             })
             .then((response) => {
-                if (response.data.msg) {
+                if (response.data.warning) {
+                    alert(response.data.msg)
+                }
+                else if (response.data.msg) {
                     alert(response.data.msg)
                     window.location.reload();
                 }
