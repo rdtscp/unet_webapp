@@ -19,11 +19,20 @@ export default class Message extends Component {
             message = this.props.message.username + ': ' + this.props.message.message
         }
 
+        message = message.split('&nbsp;').join(' ');
+        message = message.split('&lt;').join('<');
+        message = message.split('&gt;').join('>');
+
+        message = message.split('<br>').map((text, index) => {
+            return <p key={ index }>{ text }</p>
+        });
+
+
         return (
             <div className={"msg-" + colour} id={this.props.message.id}>
                 <div className="bubble">
                     <article className="media">
-                        <div className={"media-content " + colour} id={this.props.message.id}>
+                        <div className={"msg media-content " + colour} id={this.props.message.id}>
                             {message}
                         </div>
                         <div className="media-right">
