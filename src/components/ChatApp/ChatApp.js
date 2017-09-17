@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Sound } from 'react';
 import LeftPane from './LeftPane/LeftPane.js';
 import RightPane from './RightPane/RightPane.js';
 
 import axios from 'axios';
 import network from './networkHelper.js';
+import notification from './notification.mp3'; // Credit to Oliver Williamson.
+
 
 import 'bulma/css/bulma.css';
 
@@ -32,6 +34,22 @@ export default class ChatApp extends Component {
         // Listen for updates.
         io.socket.on('newMessage', (msg) => {
             var chat = this.state.currChat
+            // Handle notification.
+            if (Notification.permission === "granted") {
+                // If it's okay let's create a notification
+                var notification = new Notification(msg.username + ': ' + msg.message);
+                document.getElementById('notification').play();
+            }
+            else if (Notification.permission !== "denied") {
+            Notification.requestPermission(function (permission) {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                    console.log(msg)
+                    var notification = new Notification(msg.username + ': ' + msg.message);
+                    document.getElementById('notification').play();
+                }
+            });
+            }
             // Only update if we are in a chat.
             if (chat != null) {
                 // If the message is for this chat.
@@ -125,6 +143,7 @@ export default class ChatApp extends Component {
             <div className="app">
                 <LeftPane  io={io} chats={this.state.chats} user={this.state.user} openChat={this.openChat} />
                 <RightPane io={io} chat={this.state.currChat} user={this.state.user} />
+                <audio id="notification" src={notification} />
             </div>
         );
     }
