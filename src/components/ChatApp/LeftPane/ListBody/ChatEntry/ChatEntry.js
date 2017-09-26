@@ -18,7 +18,7 @@ export default class FriendEntry extends Component {
         this.props.openChat(this.props.data)
     }
 
-    componentWillUpdate() {
+    componentWillReceiveProps() {
         var token = localStorage.getItem('token')
         network.getCSRF((csrf) => {
             axios({
