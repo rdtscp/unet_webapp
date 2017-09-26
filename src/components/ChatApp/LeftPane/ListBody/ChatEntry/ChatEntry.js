@@ -18,6 +18,33 @@ export default class FriendEntry extends Component {
         this.props.openChat(this.props.data)
     }
 
+    componentWillUpdate() {
+        var token = localStorage.getItem('token')
+        network.getCSRF((csrf) => {
+            axios({
+                method:'POST',
+                url:'http://api.localhost:1337/unet/chat/get',
+                data: {
+                  _csrf: csrf,
+                  token: token,
+                  id: this.props.data.id
+                },
+                withCredentials: true,
+                contentType: 'json',
+            })
+            .then((response) => {
+                if (response.data.chat) {
+                    this.setState({
+                        chat: response.data.chat
+                    });
+                }
+                
+            })
+        });
+    }
+
+
+
     // Get the chat and connect to the chat socket.
     componentDidMount() {
         var token = localStorage.getItem('token')
