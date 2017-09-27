@@ -21,6 +21,7 @@ export default class Message extends Component {
 
         var extra_styles = " ";
         if (message.indexOf('./secret') == 0) {
+            message = message.substring(8);
             extra_styles += colour + "-secret";
         }
 
