@@ -37,7 +37,11 @@ export default class ChatApp extends Component {
             // Handle notification.
             if (Notification.permission === "granted") {
                 // If it's okay let's create a notification
-                var notification = new Notification(msg.username + ': ' + msg.message);
+                if (msg.message.indexOf('./secret') > -1) {
+                    var notification = new Notification(msg.username + ': New Message!');
+                } else {
+                    var notification = new Notification(msg.username + ': ' + msg.message);
+                }
                 document.getElementById('notification').play();
             }
             else if (Notification.permission !== "denied") {
