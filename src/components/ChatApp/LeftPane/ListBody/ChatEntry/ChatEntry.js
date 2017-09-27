@@ -103,7 +103,7 @@ export default class FriendEntry extends Component {
 
             var extra_styles = " ";
             if (message.indexOf('./secret') == 0) {
-                message = message.substring(8);
+                message = message.replace('./secret', '');
                 extra_styles += colour + "-secret";
             }
 
