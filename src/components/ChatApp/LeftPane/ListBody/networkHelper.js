@@ -8,7 +8,7 @@ const network = {
         return (
             axios({
                 method:'GET',
-                url:'http://api.localhost:1337/csrfToken',
+                url:'http://https://acwilson96-unet.herokuapp.com//csrfToken',
                 withCredentials: true,
                 contentType: 'json',
             })
@@ -23,7 +23,7 @@ const network = {
         return (
             axios({
                 method:'POST',
-                url:'http://api.localhost:1337/unet/device/get',
+                url:'http://https://acwilson96-unet.herokuapp.com//unet/device/get',
                 data: {
                   _csrf: csrf,
                   token: token

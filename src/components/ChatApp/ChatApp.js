@@ -12,7 +12,7 @@ import 'bulma/css/bulma.css';
 var socketIOClient = require('socket.io-client');
 var sailsIOClient = require('sails.io.js');
 var io = sailsIOClient(socketIOClient);
-io.sails.url = 'http://api.localhost:1337';
+io.sails.url = 'http://https://acwilson96-unet.herokuapp.com/';
 
 export default class ChatApp extends Component {
 
@@ -108,7 +108,7 @@ export default class ChatApp extends Component {
             // Get Friends.
             axios({
                 method:'POST',
-                url:'http://api.localhost:1337/unet/user/get',
+                url:'http://https://acwilson96-unet.herokuapp.com//unet/user/get',
                 data: {
                   _csrf: csrf,
                   token: token
@@ -155,7 +155,7 @@ export default class ChatApp extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method:'POST',
-                url:'http://api.localhost:1337/unet/chat/get',
+                url:'http://https://acwilson96-unet.herokuapp.com//unet/chat/get',
                 data: {
                     id: chat.id,
                   _csrf: csrf,

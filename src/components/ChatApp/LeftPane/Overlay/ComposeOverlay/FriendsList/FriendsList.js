@@ -23,7 +23,7 @@ export default class FriendsList extends Component {
             // Get Friends.
             axios({
                 method:'POST',
-                url:'http://api.localhost:1337/unet/friendship/get/all',
+                url:'http://https://acwilson96-unet.herokuapp.com//unet/friendship/get/all',
                 data: {
                   _csrf: csrf,
                   token: token
