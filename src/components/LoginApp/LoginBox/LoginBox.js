@@ -45,7 +45,7 @@ export default class LoginBox extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method: 'POST',
-                url: 'https://acwilson96-unet.herokuapp.com/unet/user/create',
+                url: 'https://acwilson96-unet-core.herokuapp.com/unet/user/create',
                 data: {
                     _csrf: csrf,
                     username: uname,
@@ -72,7 +72,7 @@ export default class LoginBox extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method: 'POST',
-                url: 'https://acwilson96-unet.herokuapp.com/unet/device/create',
+                url: 'https://acwilson96-unet-core.herokuapp.com/unet/device/create',
                 data: {
                     _csrf: csrf,
                     username: uname,

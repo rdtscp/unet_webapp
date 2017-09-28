@@ -32,7 +32,7 @@ export default class FriendEntry extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method:'POST',
-                url:'https://acwilson96-unet.herokuapp.com/unet/chat/create',
+                url:'https://acwilson96-unet-core.herokuapp.com/unet/chat/create',
                 data: {
                   _csrf: csrf,
                   token: token,
