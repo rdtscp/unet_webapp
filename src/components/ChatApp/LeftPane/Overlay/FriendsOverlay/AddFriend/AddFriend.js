@@ -16,7 +16,7 @@ export default class AddFriend extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method:'POST',
-                url:'https://acwilson96-unet.herokuapp.com/unet/friendship/create',
+                url:'https://acwilson96-unet-core.herokuapp.com/unet/friendship/create',
                 data: {
                   username: uname,
                   _csrf: csrf,

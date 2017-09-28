@@ -22,7 +22,7 @@ export default class FriendEntry extends Component {
             // Update Friendship.
             axios({
                 method:'POST',
-                url:'https://acwilson96-unet.herokuapp.com/unet/friendship/update',
+                url:'https://acwilson96-unet-core.herokuapp.com/unet/friendship/update',
                 data: {
                   _csrf: csrf,
                   token: token,
@@ -50,7 +50,7 @@ export default class FriendEntry extends Component {
             // Update Friendship.
             axios({
                 method:'POST',
-                url:'https://acwilson96-unet.herokuapp.com/unet/friendship/destroy',
+                url:'https://acwilson96-unet-core.herokuapp.com/unet/friendship/destroy',
                 data: {
                   _csrf: csrf,
                   token: token,

@@ -19,7 +19,7 @@ export default class RightPane extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method:'POST',
-                url:'https://acwilson96-unet.herokuapp.com/unet/message/create',
+                url:'https://acwilson96-unet-core.herokuapp.com/unet/message/create',
                 data: {
                   _csrf: csrf,
                   token: token,
