@@ -8,7 +8,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "https://acwilson96.github.io/unet_webapp/build/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
