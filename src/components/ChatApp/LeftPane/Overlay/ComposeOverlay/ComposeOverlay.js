@@ -55,7 +55,7 @@ export default class ComposeOverlay extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method:'POST',
-                url:'http://https://acwilson96-unet.herokuapp.com//unet/chat/create',
+                url:'https://acwilson96-unet.herokuapp.com/unet/chat/create',
                 data: {
                   _csrf: csrf,
                   token: token,

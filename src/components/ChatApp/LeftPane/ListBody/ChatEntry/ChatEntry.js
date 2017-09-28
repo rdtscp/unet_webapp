@@ -23,7 +23,7 @@ export default class FriendEntry extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method:'POST',
-                url:'http://https://acwilson96-unet.herokuapp.com//unet/chat/get',
+                url:'https://acwilson96-unet.herokuapp.com/unet/chat/get',
                 data: {
                   _csrf: csrf,
                   token: token,
@@ -51,7 +51,7 @@ export default class FriendEntry extends Component {
         network.getCSRF((csrf) => {
             axios({
                 method:'POST',
-                url:'http://https://acwilson96-unet.herokuapp.com//unet/chat/get',
+                url:'https://acwilson96-unet.herokuapp.com/unet/chat/get',
                 data: {
                   _csrf: csrf,
                   token: token,
