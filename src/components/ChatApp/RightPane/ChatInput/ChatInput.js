@@ -27,6 +27,10 @@ export default class ChatInput extends Component {
         if (e.keyCode === 13 && !e.shiftKey) {
             e.preventDefault();
             var msg = input.innerHTML;
+            if (msg == './help' || msg == './h' || msg == './?') {
+                alert('Available Commands\n    ./secret - Make your message blurred unless hovered over with mouse.');
+                return;
+            }
             if (input.innerHTML != '') {
                 this.sendMessage(msg);
                 document.getElementById('input').innerHTML = '';
