@@ -90,6 +90,19 @@ export default class LoginBox extends Component {
         });
     }
 
+    // Handles all key presses in the input fields.
+    _handleKeyPress = (e) => {
+        // If Enter key pressed without shift held.
+        if (e.keyCode === 13) {
+            if (this.state.login == 'shown') {
+                this.login();
+            }
+            else {
+                this.register();
+            }
+        }
+    }
+
     render() {
         return (
             // Central Card
@@ -105,19 +118,19 @@ export default class LoginBox extends Component {
                 <div>
                     <div className={this.state.login} id="login_div">
                         <div className="form-group">
-                            <input id="log_uname" type="username" className="form-control" aria-describedby="emailHelp" placeholder="Username" />
+                            <input onKeyDown={this._handleKeyPress} id="log_uname" type="username" className="form-control" aria-describedby="emailHelp" placeholder="Username" />
                         </div>
                         <div className="form-group">
-                            <input id="log_pword" type="password" className="form-control" placeholder="Password" />
+                            <input onKeyDown={this._handleKeyPress} id="log_pword" type="password" className="form-control" placeholder="Password" />
                         </div>
-                        <button onClick={this.login} className="btn btn-primary justify-content-center">Login</button>
+                        <button onClick={this._handleKeyPress} className="btn btn-primary justify-content-center">Login</button>
                     </div>
                     <div className={this.state.register} id="register_div">
                         <div className="form-group">
-                            <input id="reg_uname" type="username" className="form-control" aria-describedby="emailHelp" placeholder="Username" />
+                            <input onKeyDown={this._handleKeyPress} id="reg_uname" type="username" className="form-control" aria-describedby="emailHelp" placeholder="Username" />
                         </div>
                         <div className="form-group">
-                            <input id="reg_pword" type="password" className="form-control" placeholder="Password" />
+                            <input onKeyDown={this._handleKeyPress} id="reg_pword" type="password" className="form-control" placeholder="Password" />
                         </div>
                         <button onClick={this.register} className="btn btn-primary justify-content-center">Register</button>
                     </div>
