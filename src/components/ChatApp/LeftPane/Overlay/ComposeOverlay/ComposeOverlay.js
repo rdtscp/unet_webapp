@@ -4,7 +4,7 @@ import Header from '../Header/Header.js';
 import FriendsList from './FriendsList/FriendsList.js';
 import CreateChat from './CreateChat/CreateChat.js';
 
-import network from './networkHelper.js';
+import network from '../../../../_common/networkHelper';
 import axios from 'axios';
 
 export default class ComposeOverlay extends Component {

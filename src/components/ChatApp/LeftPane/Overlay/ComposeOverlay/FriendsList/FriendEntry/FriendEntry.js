@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './FriendEntry.css';
 
-import network from './networkHelper.js';
+import network from '../../../../../../_common/networkHelper';
 import axios from 'axios';
 
 export default class FriendEntry extends Component {

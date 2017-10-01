@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './ChatEntry.css';
 
 import axios from 'axios';
-import network from './networkHelper.js';
+import network from '../../../../_common/networkHelper.js';
 
 export default class FriendEntry extends Component {
     

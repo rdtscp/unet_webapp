@@ -3,7 +3,7 @@ import './FriendsList.css';
 
 import FriendEntry from './FriendEntry/FriendEntry.js';
 
-import network from './networkHelper.js';
+import network from '../../../../../_common/networkHelper';
 import axios from 'axios';
 
 export default class FriendsList extends Component {
