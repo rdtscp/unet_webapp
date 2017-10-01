@@ -3,7 +3,7 @@ import LeftPane from './LeftPane/LeftPane.js';
 import RightPane from './RightPane/RightPane.js';
 
 import axios from 'axios';
-import network from './networkHelper.js';
+import network from '../_common/networkHelper.js';
 import notification from './notification.mp3'; // Credit to Oliver Williamson.
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import network from './networkHelper.js';
+import network from '../../_common/networkHelper.js';
 import 'bootstrap/dist/css/bootstrap.css';
 require('./LoginBox.css');
 

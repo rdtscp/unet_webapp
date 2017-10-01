@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AddFriend.css';
 
 import axios from 'axios'
-import network from './networkHelper';
+import network from '../../../../../_common/networkHelper';
 
 export default class AddFriend extends Component {
     

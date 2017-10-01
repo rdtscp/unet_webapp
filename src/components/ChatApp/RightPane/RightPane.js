@@ -5,7 +5,7 @@ import ChatHeader from './ChatHeader/ChatHeader.js';
 import ChatInput from './ChatInput/ChatInput.js';
 import Message from './Message/Message.js';
 
-import network from './networkHelper.js';
+import network from '../../_common/networkHelper.js';
 import axios from 'axios';
 
 export default class RightPane extends Component {
