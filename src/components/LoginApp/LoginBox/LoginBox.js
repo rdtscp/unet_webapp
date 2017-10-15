@@ -123,7 +123,7 @@ export default class LoginBox extends Component {
                         <div className="form-group">
                             <input onKeyDown={this._handleKeyPress} id="log_pword" type="password" className="form-control" placeholder="Password" />
                         </div>
-                        <button onClick={this._handleKeyPress} className="btn btn-primary justify-content-center">Login</button>
+                        <button onClick={this.login} className="btn btn-primary justify-content-center">Login</button>
                     </div>
                     <div className={this.state.register} id="register_div">
                         <div className="form-group">
