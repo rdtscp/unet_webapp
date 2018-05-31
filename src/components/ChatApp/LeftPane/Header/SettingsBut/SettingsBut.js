@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './SettingsBut.css';
 
 export default class SettingsBut extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './FriendsBut.css';
 
 export default class FriendsBut extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

@@ -8,7 +8,7 @@ export default class ChatHeader extends Component {
         return (
             <div className="chatHeader">
                 <div className="chatAvatar">
-                    <img src="http://bulma.io/images/placeholders/64x64.png" />
+                    <img src="http://bulma.io/images/placeholders/64x64.png" alt="" />
                 </div>
                 <div className="chatName is-size-3">
                         {this.props.chat.name}
