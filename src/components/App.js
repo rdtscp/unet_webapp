@@ -55,7 +55,7 @@ export default class App extends Component {
 
   render() {
     if (this.state.loading) {
-    return (<p> Loading Please Wait... </p>);
+      return (<p> Loading Please Wait... </p>);
     } else {
       if (this.state.authenticated) {
         return (

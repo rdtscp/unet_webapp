@@ -94,7 +94,7 @@ export default class LoginBox extends Component {
     _handleKeyPress = (e) => {
         // If Enter key pressed without shift held.
         if (e.keyCode === 13) {
-            if (this.state.login == 'shown') {
+            if (this.state.login ==== 'shown') {
                 this.login();
             }
             else {

@@ -9,10 +9,6 @@ import network from '../../_common/networkHelper.js';
 import axios from 'axios';
 
 export default class RightPane extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     sendMessage = (msg) => {
         var token = localStorage.getItem('token');

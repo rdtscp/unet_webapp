@@ -7,10 +7,6 @@ import LoginBox from './LoginBox/LoginBox.js';
 
 export default class LoginApp extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     // Passes authentication call up Component stack.
     isAuthenticated() {
         this.props.auth();
