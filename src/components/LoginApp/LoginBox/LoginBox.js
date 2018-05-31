@@ -18,7 +18,8 @@ export default class LoginBox extends Component {
 
     }
 
-    showLogin() {
+    showLogin(e) {
+        e.preventDefault()
         this.setState({
             login: 'shown',
             register: 'hidden'
@@ -27,7 +28,8 @@ export default class LoginBox extends Component {
         document.getElementById("register_nav").classList.remove("active");
     }
 
-    showRegister() {
+    showRegister(e) {
+        e.preventDefault()
         this.setState({
             login: 'hidden',
             register: 'shown'
