@@ -110,8 +110,8 @@ export default class LoginBox extends Component {
                 {/* Navbar Container */}
                 <div>
                     <nav className="nav nav-pills nav-fill">
-                        <a onClick={this.showLogin} id="login_nav" className="nav-item nav-link active" href="javascript:void(0);">Login</a>
-                        <a onClick={this.showRegister} id="register_nav" className="nav-item nav-link" href="javascript:void(0);">Register</a>
+                        <a onClick={this.showLogin} id="login_nav" className="nav-item nav-link active" href="">Login</a>
+                        <a onClick={this.showRegister} id="register_nav" className="nav-item nav-link" href="">Register</a>
                     </nav>
                 </div>
                 {/* Form Container */}
