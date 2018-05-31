@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './ComposeBut.css';
 
 export default class ComposeBut extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
