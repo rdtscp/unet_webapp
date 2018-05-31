@@ -3,10 +3,6 @@ import './CreateChat.css';
 
 export default class AddFriend extends Component {
     
-    constructor(props) {
-        super(props);
-    }
-
     _handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             this.props.createChat();
