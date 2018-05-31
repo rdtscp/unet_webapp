@@ -1,8 +1,9 @@
 # unet_webapp
-### Version: 0.1.0 Beta Release
 
-React Single Page application to interact with [unet-core](https://acwilson96.github.io/unet-core) API.
+React Single Page application to interact with [unet-core](https://github.com/acwilson96/unet-core/) API.
 
----
+Part of the [unet](https://github.com/acwilson96/unet/) project.
 
-The latest build can be used [here](https://acwilson96.github.io/unet_webapp/build/)
+------
+
+### Live Beta on [Heroku](https://acwilson96-unet.herokuapp.com/)
