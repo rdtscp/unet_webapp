@@ -89,20 +89,20 @@ export default class FriendEntry extends Component {
             }
 
             // Determine colour/side of last_msg.
-            var colour = 'left';
+            colour = 'left';
             if (this.state.chat.last_sender) {
                 // alert(this.state.chat.last_sender.id + ' == ' +  this.props.user)
-                if (this.state.chat.last_sender.id == this.props.user) {
+                if (this.state.chat.last_sender.id === this.props.user) {
                     colour = 'right';
                 }
             }
 
 
             // Shorten last_msg if necessary
-            var message = this.state.chat.last_msg;
+            message = this.state.chat.last_msg;
 
             var extra_styles = " ";
-            if (message.indexOf('./secret') == 0) {
+            if (message.indexOf('./secret') === 0) {
                 message = message.replace('./secret', '');
                 extra_styles += colour + "-secret";
             }
@@ -128,7 +128,7 @@ export default class FriendEntry extends Component {
         return (
             <div className="chatEntry" key={this.props.data.id} id={this.props.data.id} onMouseDown={this.openChat}>
                 <div className="chatAvatar">
-                    <img src="http://bulma.io/images/placeholders/64x64.png" alt="Image" />
+                    <img src="http://bulma.io/images/placeholders/64x64.png" alt="" />
                 </div>
                 <div className="chatTimestamp">
                         {lastActive}
