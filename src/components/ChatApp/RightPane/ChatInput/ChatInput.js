@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './ChatInput.css';
 
 export default class ChatInput extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     // Add/Remove listeners for this component.
     componentDidMount() {
@@ -27,16 +23,16 @@ export default class ChatInput extends Component {
         if (e.keyCode === 13 && !e.shiftKey) {
             e.preventDefault();
             var msg = input.innerHTML;
-            if (msg == './help' || msg == './h' || msg == './?') {
+            if (msg === './help' || msg === './h' || msg === './?') {
                 alert('Available Commands\n    ./secret - Make your message blurred unless hovered over with mouse.');
                 return;
             }
-            if (input.innerHTML != '') {
+            if (input.innerHTML !== '') {
                 this.sendMessage(msg);
                 document.getElementById('input').innerHTML = '';
             }
         }
-        else if (e.keyCode === 38 && input.innerHTML == '') {
+        else if (e.keyCode === 38 && input.innerHTML === '') {
             input.innerHTML = this.props.lastMessage.message;
         }
     }
