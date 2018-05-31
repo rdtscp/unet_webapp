@@ -4,10 +4,6 @@ import Header from '../Header/Header.js';
 
 export default class BurgerOverlay extends Component {
     
-    constructor(props) {
-        super(props);
-    }
-    
     logout() {
         localStorage.removeItem('token');
         window.location.reload()

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './CloseBut.css';
 
 export default class BurgerBut extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

@@ -5,10 +5,6 @@ import axios from 'axios'
 import network from '../../../../../_common/networkHelper';
 
 export default class AddFriend extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     // Processes the request of sending a friend request.
     processRequest = (uname) => {
