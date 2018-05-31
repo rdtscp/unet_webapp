@@ -68,7 +68,7 @@ export default class FriendEntry extends Component {
         return (
             <div className="friendEntry" key={this.props.data.id} id={this.props.data.id}>
                 <div className="friendAvatar">
-                    <img src="http://bulma.io/images/placeholders/64x64.png" alt="avatar" />
+                    <img src="http://bulma.io/images/placeholders/64x64.png" alt="" />
                 </div>
                 <div>
                     <div>
