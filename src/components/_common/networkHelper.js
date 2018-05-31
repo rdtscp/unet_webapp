@@ -10,7 +10,7 @@ const network = {
                 method:'GET',
                 url:'https://acwilson96-unet-core.herokuapp.com/csrfToken',
                 withCredentials: true,
-                contentType: 'json',
+                contentType: 'application/json',
             })
             .then((response) => {
                 return cb(response.data._csrf);
