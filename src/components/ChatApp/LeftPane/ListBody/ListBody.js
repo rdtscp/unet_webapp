@@ -3,14 +3,7 @@ import './ListBody.css';
 
 import ChatEntry from './ChatEntry/ChatEntry.js';
 
-import axios from 'axios';
-import network from '../../../_common/networkHelper.js';
-
 export default class ListBody extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
     
     render() {
         var chats = this.props.chats;
