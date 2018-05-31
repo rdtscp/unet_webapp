@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import './Message.css';
 
 export default class Message extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     render() {
 
         var colour = 'left';
-        if (this.props.user == this.props.message.sender) {
+        if (this.props.user === this.props.message.sender) {
             colour = 'right';
         }
 
