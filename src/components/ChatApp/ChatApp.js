@@ -57,7 +57,7 @@ export default class ChatApp extends Component {
             // Only update if we are in a chat.
             if (chat != null) {
                 // If the message is for this chat.
-                if (msg.chat == chat.id) {
+                if (msg.chat === chat.id) {
                     var msgs = chat.messages;
                     msgs.push(msg);
                     this.setState({
@@ -69,7 +69,7 @@ export default class ChatApp extends Component {
             var chat = this.state.currChat;
             // If the message is for this chat, append the bubble.
             if (chat) {
-                if (msg.chat == chat.id) {
+                if (msg.chat ==== chat.id) {
                     if (chat.last_sender == null) {
                         var temp_sender = { id: msg.sender, username: msg.username }
                         chat.last_sender = temp_sender;
@@ -88,7 +88,7 @@ export default class ChatApp extends Component {
             for (var i=0; i < chats.length; i++) {
                 console.log(chats[i])
                 // console.log(msg)
-                if (chats[i].id == msg.chat) {
+                if (chats[i].id === msg.chat) {
                     chats[i].last_msg = msg.message;
                     chats[i].last_active = msg.timestamp;
                     chats[i].last_sender = msg.sender;
