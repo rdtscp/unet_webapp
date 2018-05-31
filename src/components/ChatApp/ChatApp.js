@@ -69,7 +69,7 @@ export default class ChatApp extends Component {
             var chat = this.state.currChat;
             // If the message is for this chat, append the bubble.
             if (chat) {
-                if (msg.chat ==== chat.id) {
+                if (msg.chat === chat.id) {
                     if (chat.last_sender == null) {
                         var temp_sender = { id: msg.sender, username: msg.username }
                         chat.last_sender = temp_sender;
