@@ -1,4 +1,4 @@
-import React, { Component, Sound } from 'react';
+import React, { Component } from 'react';
 import LeftPane from './LeftPane/LeftPane.js';
 import RightPane from './RightPane/RightPane.js';
 
@@ -37,11 +37,11 @@ export default class ChatApp extends Component {
             // Handle notification.
             if (Notification.permission === "granted") {
                 // If it's okay let's create a notification
-                if (msg.message.indexOf('./secret') > -1) {
-                    var notification = new Notification(msg.username + ': New Message!');
-                } else {
-                    var notification = new Notification(msg.username + ': ' + msg.message);
-                }
+                // if (msg.message.indexOf('./secret') > -1) {
+                //     var notification = new Notification(msg.username + ': New Message!');
+                // } else {
+                //     var notification = new Notification(msg.username + ': ' + msg.message);
+                // }
                 document.getElementById('notification').play();
             }
             else if (Notification.permission !== "denied") {
@@ -49,7 +49,7 @@ export default class ChatApp extends Component {
                 // If the user accepts, let's create a notification
                 if (permission === "granted") {
                     console.log(msg)
-                    var notification = new Notification(msg.username + ': ' + msg.message);
+                    // var notification = new Notification(msg.username + ': ' + msg.message);
                     document.getElementById('notification').play();
                 }
             });
@@ -66,7 +66,7 @@ export default class ChatApp extends Component {
                 }
             }
             // Update chat objects
-            var chat = this.state.currChat;
+            chat = this.state.currChat;
             // If the message is for this chat, append the bubble.
             if (chat) {
                 if (msg.chat === chat.id) {

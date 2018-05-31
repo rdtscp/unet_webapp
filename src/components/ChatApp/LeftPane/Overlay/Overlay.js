@@ -7,10 +7,6 @@ import FriendsOverlay from './FriendsOverlay/FriendsOverlay.js';
 import SettingsOverlay from './SettingsOverlay/SettingsOverlay.js';
 
 export default class Overlay extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         document.addEventListener('keydown', this._handleKeyPress);
