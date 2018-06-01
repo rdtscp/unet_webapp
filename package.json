@@ -1,5 +1,5 @@
 {
-  "name": "unet_webapp",
+  "name": "foo-bar-acwilson96",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,9 +8,9 @@
     "bulma": "^0.5.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
-    "react-scripts": "^1.1.4",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "1.1.4",
     "sails.io.js": "^1.2.1",
     "socket.io-client": "^2.1.1"
   },
@@ -19,6 +19,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "homepage": "https://acwilson96.github.io/unet_webapp/build/"
+  }
 }
