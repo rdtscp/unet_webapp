@@ -140,8 +140,7 @@ export default class ChatApp extends Component {
     // Subscribes the socket to a chat.
     joinChat = (chatID) => {
         var token = localStorage.getItem('token');
-        io.socket.get('/csrfToken', (res) => {
-            var csrf = res._csrf;
+        network.getCSRF((csrf) => {
             io.socket.headers = {
                 "x-csrf-token": csrf,
             };
